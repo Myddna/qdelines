@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <Navbar className={styles.Header} bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand>QDE Guidelines</Navbar.Brand>
+        <Navbar.Brand as="h1">QDE Lines</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

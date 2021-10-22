@@ -1,15 +1,19 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import { FaGithub } from "react-icons/fa";
 import styles from "./Footer.module.css";
+import { Button } from "react-bootstrap";
 
 const Footer = () => (
   <div className={styles.Footer} data-testid="Footer">
-    Footer Component
+    <Button
+      href="https://github.com/Myddna/qdelines"
+      target="_blank"
+      rel="noreferrer"
+      variant="outline-primary"
+    >
+      <FaGithub size="1.2em" /> Fork me on GitHub
+    </Button>
   </div>
 );
-
-// Footer.propTypes = {};
-
-// Footer.defaultProps = {};
 
 export default Footer;

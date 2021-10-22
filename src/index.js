@@ -5,12 +5,15 @@ import App from "./App";
 //import reportWebVitals from "./reportWebVitals";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import { IconContext } from "react-icons";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header></Header>
-    <App />
-    <Footer />
+    <IconContext.Provider value={{ className: "react-icons me-2" }}>
+      <Header></Header>
+      <App />
+      <Footer />
+    </IconContext.Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

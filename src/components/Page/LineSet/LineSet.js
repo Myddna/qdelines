@@ -1,12 +1,11 @@
 import React from "react";
 
 const LineSet = (props) => {
-  const structure = props.lineSetStructure;
-  const style = props.lineSetStyle;
-  const coordinates = props.startIn;
-  const totalWidth = props.width;
-
-  console.log("LineSet: ", structure);
+  let structure = props.lineSetStructure;
+  let style = props.lineSetStyle;
+  let coordinates = props.startIn;
+  let totalWidth = props.width;
+  // console.log(coordinates);
   return (
     <g data-testid="LineSet">
       {/** Ascender */}

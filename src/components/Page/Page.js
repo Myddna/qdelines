@@ -6,6 +6,7 @@ import {
   calculateRepetitions,
   PageDefaultProps,
   PagePropTypes,
+  calculateLineSetHeight,
 } from "./PageDefinitions";
 import LineSet from "./LineSet/LineSet";
 
@@ -14,17 +15,21 @@ const Page = forwardRef((props, ref) => {
     props.config.sizeName,
     props.config.orientation
   );
+
   // Adding fixed margin for now: 10mm
   const pageContentMeasures = {
     width: pageMeasures.width - 20,
     height: pageMeasures.height - 20,
   };
-  /*
+
+  // Calculating repetitions
   const groupRepetitions = calculateRepetitions(
     pageContentMeasures,
     props.config.lineSetStructure
   );
-  */
+
+  const lineSetHeight = calculateLineSetHeight(props.config.lineSetStructure);
+
   let style = {};
   if (props.printing) {
     /**
@@ -36,7 +41,17 @@ const Page = forwardRef((props, ref) => {
       height: `${pageMeasures.height - 0.1}mm`,
     };
   }
-  console.log(props.config.lineSetStructure.xHeight);
+
+  // Computing final SVG Height
+  const fullSvgHeight =
+    lineSetHeight * groupRepetitions +
+    props.config.lineSetStructure.separation * (groupRepetitions - 1);
+
+  // Initial offset calculation for vertically center the guidelines
+  // 10 default margin, -2 adjustment for page signature
+  const initialYOffset =
+    (pageContentMeasures.height - fullSvgHeight) / 2 + 10 - 2;
+
   return (
     <svg
       ref={ref}
@@ -46,12 +61,29 @@ const Page = forwardRef((props, ref) => {
       xmlns="http://www.w3.org/2000/svg"
       style={style}
     >
-      <LineSet
-        lineSetStructure={props.config.lineSetStructure}
-        lineSetStyle={props.config.lineSetStyle}
-        startIn={{ x: 10, y: 10 }}
-        width={pageContentMeasures.width}
-      />
+      <style>{".signature { font: italic 3px sans-serif; }"}</style>
+      {[...Array(groupRepetitions)].map((elem, i) => {
+        let startIn = {
+          x: 10,
+          y:
+            lineSetHeight * i +
+            props.config.lineSetStructure.separation * i +
+            initialYOffset,
+        };
+        //        console.log(lineSetHeight, startIn.y);
+        return (
+          <LineSet
+            key={i}
+            lineSetStructure={props.config.lineSetStructure}
+            lineSetStyle={props.config.lineSetStyle}
+            startIn={startIn}
+            width={pageContentMeasures.width}
+          />
+        );
+      })}
+      <text y={initialYOffset + fullSvgHeight + 5} x="10" className="signature">
+        Guías generadas con QDE Lines - https://lines.quedemoniosescribo.art
+      </text>
     </svg>
   );
 });

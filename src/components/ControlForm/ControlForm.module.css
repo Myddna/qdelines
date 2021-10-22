@@ -1,1 +1,7 @@
-.ControlForm {}
+.ControlForm {
+  padding: 2rem 0;
+}
+
+.ControlForm input[type="number"] {
+  max-width: 5rem;
+}

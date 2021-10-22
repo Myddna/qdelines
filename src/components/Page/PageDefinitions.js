@@ -35,7 +35,22 @@ export const getPageSize = (sizeName, orientation) => {
  * @returns
  */
 export const calculateRepetitions = (size, lineSetStructure) => {
-  return 1;
+  const lineSetHeight = calculateLineSetHeight(lineSetStructure);
+
+  const repetitions = Math.floor(
+    (size.height - lineSetStructure.separation) /
+      (lineSetHeight + lineSetStructure.separation)
+  );
+
+  return repetitions;
+};
+
+export const calculateLineSetHeight = (lineSetStructure) => {
+  return (
+    lineSetStructure.ascender +
+    lineSetStructure.xHeight +
+    lineSetStructure.descender
+  );
 };
 
 /**
@@ -49,7 +64,7 @@ export const PageDefaultProps = {
     ascender: 6,
     descender: 6,
     caps: 4.5,
-    separation: 4,
+    separation: 8,
     obliqueSlant: 30,
     obliqueSeparation: 8,
   },
