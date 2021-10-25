@@ -94,7 +94,7 @@ function App() {
                 onBeforeGetContent={handleOnBeforeGetContent}
                 onBeforePrint={handleOnBeforePrint}
                 removeAfterPrint="true"
-                pageStyle="@page { size: A4 landscape;  margin: 0mm; } @media print { body { -webkit-print-color-adjust: exact; } }"
+                pageStyle="@page { margin: 0mm; } @media print { body { -webkit-print-color-adjust: exact; } }"
               />
             </div>
             <Page config={pageConfig} printing={printing} ref={componentRef} />

@@ -12,6 +12,41 @@ const ControlForm = (props) => {
     props.resetConfig();
   };
 
+  const paperFields = () => {
+    return (
+      <Card className="mb-3">
+        <Card.Header>Papel</Card.Header>
+        <Card.Body>
+          <Row>
+            <Form.Group as={Col} sm="6" md>
+              <Form.Label htmlFor="sizeName">Tamaño</Form.Label>
+              <Form.Select
+                name="sizeName"
+                onChange={handleInputChange}
+                value={props.config.sizeName}
+              >
+                <option value="A5">A5</option>
+                <option value="A4">A4</option>
+                <option value="A3">A3</option>
+              </Form.Select>
+            </Form.Group>
+            <Form.Group as={Col} sm="6" md>
+              <Form.Label htmlFor="orientation">Orientación</Form.Label>
+              <Form.Select
+                name="orientation"
+                onChange={handleInputChange}
+                value={props.config.orientation}
+              >
+                <option value="landscape">Horizontal</option>
+                <option value="portrait">Vertical</option>
+              </Form.Select>
+            </Form.Group>
+          </Row>
+        </Card.Body>
+      </Card>
+    );
+  };
+
   const xHeightFields = () => {
     return (
       <Card className="mb-3">
@@ -289,6 +324,7 @@ const ControlForm = (props) => {
             <FaUndoAlt /> Reiniciar
           </Button>
         </div>
+        {paperFields()}
         {xHeightFields()}
         {ascenderFields()}
         {capsFields()}

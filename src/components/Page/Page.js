@@ -34,11 +34,11 @@ const Page = forwardRef((props, ref) => {
   if (props.printing) {
     /**
      * react-to-print creates blank page if the component measures
-     * are exactly the same than the page Substracting 0.1mm.
+     * are exactly the same than the page substracting 1mm at te bottom.
      */
     style = {
       width: `${pageMeasures.width}mm`,
-      height: `${pageMeasures.height - 0.1}mm`,
+      height: `${pageMeasures.height - 1}mm`,
     };
   }
 
@@ -61,7 +61,7 @@ const Page = forwardRef((props, ref) => {
       xmlns="http://www.w3.org/2000/svg"
       style={style}
     >
-      <style>{".signature { font: italic 3px sans-serif; }"}</style>
+      <style>{`@page {size: ${props.config.sizeName} ${props.config.orientation}; } .signature { font: italic 2.5px sans-serif; }`}</style>
       {[...Array(groupRepetitions)].map((elem, i) => {
         let startIn = {
           x: 10,
@@ -81,7 +81,11 @@ const Page = forwardRef((props, ref) => {
           />
         );
       })}
-      <text y={initialYOffset + fullSvgHeight + 5} x="10" className="signature">
+      <text
+        y={initialYOffset + fullSvgHeight + 3.5}
+        x="10"
+        className="signature"
+      >
         Guías generadas con QDE Lines - https://lines.quedemoniosescribo.art
       </text>
     </svg>
