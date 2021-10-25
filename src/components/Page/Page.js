@@ -86,7 +86,10 @@ const Page = forwardRef((props, ref) => {
         x="10"
         className="signature"
       >
-        Guías generadas con QDE Lines - https://lines.quedemoniosescribo.art
+        Guías generadas con QDE Lines -{" "}
+        <a href="https://lines.quedemoniosescribo.art">
+          https://lines.quedemoniosescribo.art
+        </a>
       </text>
     </svg>
   );
