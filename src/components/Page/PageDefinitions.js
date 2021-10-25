@@ -65,8 +65,8 @@ export const PageDefaultProps = {
     descender: 6,
     caps: 4.5,
     separation: 8,
-    obliqueSlant: 30,
-    obliqueSeparation: 8,
+    obliqueSlant: 55,
+    obliqueSeparation: 16,
   },
   lineSetStyle: {
     baseline: {

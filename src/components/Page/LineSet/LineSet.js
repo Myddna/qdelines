@@ -5,7 +5,15 @@ const LineSet = (props) => {
   let style = props.lineSetStyle;
   let coordinates = props.startIn;
   let totalWidth = props.width;
-  // console.log(coordinates);
+  // For Obliques
+  let startOblique = {
+    x: coordinates.x,
+    y:
+      coordinates.y +
+      structure.ascender +
+      structure.xHeight +
+      structure.descender,
+  };
   return (
     <g data-testid="LineSet">
       {/** Ascender */}
@@ -76,8 +84,57 @@ const LineSet = (props) => {
         stroke={style.descender.color}
         strokeWidth={style.descender.width}
       />
+      {/** Oblique */}
+      {drawObliques(
+        coordinates.y,
+        startOblique,
+        structure.obliqueSlant,
+        structure.obliqueSeparation,
+        totalWidth,
+        style.oblique
+      )}
     </g>
   );
+};
+
+const drawObliques = (
+  topLimitY,
+  startOblique,
+  obliqueSlant,
+  obliqueSeparation,
+  totalWidth,
+  style
+) => {
+  const linesNumber = Math.floor(totalWidth / obliqueSeparation);
+  //console.log(totalWidth, obliqueSeparation, linesNumber);
+  let lines = [];
+  let computedY = startOblique.y - topLimitY;
+  let computedX = computedY / Math.tan(convertToRadians(obliqueSlant));
+  let lineCoords = {
+    x1: startOblique.x,
+    y1: startOblique.y,
+    x2: startOblique.x + computedX,
+    y2: topLimitY,
+  };
+  for (let i = 0; i < linesNumber; i++) {
+    lines.push(
+      <line
+        x1={lineCoords.x1}
+        y1={lineCoords.y1}
+        x2={lineCoords.x2}
+        y2={lineCoords.y2}
+        stroke={style.color}
+        strokeWidth={style.width}
+      />
+    );
+    lineCoords.x1 += obliqueSeparation;
+    lineCoords.x2 += obliqueSeparation;
+  }
+  return <g>{lines}</g>;
+};
+
+const convertToRadians = (deg) => {
+  return deg * (Math.PI / 180);
 };
 
 export default LineSet;
