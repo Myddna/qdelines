@@ -10,7 +10,7 @@ import { IconContext } from "react-icons";
 ReactDOM.render(
   <React.StrictMode>
     <IconContext.Provider value={{ className: "react-icons me-2" }}>
-      <Header></Header>
+      {/* <Header></Header> */}
       <App />
       <Footer />
     </IconContext.Provider>
