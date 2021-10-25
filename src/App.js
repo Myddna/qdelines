@@ -72,14 +72,14 @@ function App() {
       <IntroHero />
       <Container fluid>
         <Row>
-          <Col lg="4">
+          <Col md="6" xl="4">
             <ControlForm
               config={pageConfig}
               resetConfig={handleResetConfig}
               inputChange={handleInputChange}
             />
           </Col>
-          <Col lg="8">
+          <Col md="6" xl="8">
             <Page config={pageConfig} printing={printing} ref={componentRef} />
             <div className="text-center mb-3">
               <ReactToPrint
