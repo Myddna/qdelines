@@ -63,7 +63,7 @@ export const PageDefaultProps = {
     xHeight: 8,
     ascender: 6,
     descender: 6,
-    caps: 4.5,
+    caps: 5,
     separation: 8,
     obliqueSlant: 55,
     obliqueSeparation: 16,
@@ -90,7 +90,7 @@ export const PageDefaultProps = {
       width: 0.3,
     },
     oblique: {
-      color: "#000000",
+      color: "#616161",
       width: 0.3,
     },
   },

@@ -106,29 +106,35 @@ const drawObliques = (
   style
 ) => {
   const linesNumber = Math.floor(totalWidth / obliqueSeparation);
-  //console.log(totalWidth, obliqueSeparation, linesNumber);
+  const tanAlpha = Math.tan(convertToRadians(obliqueSlant));
+  console.log(totalWidth, obliqueSeparation, linesNumber);
   let lines = [];
   let computedY = startOblique.y - topLimitY;
-  let computedX = computedY / Math.tan(convertToRadians(obliqueSlant));
+  let computedX = computedY / tanAlpha;
   let lineCoords = {
     x1: startOblique.x,
     y1: startOblique.y,
     x2: startOblique.x + computedX,
     y2: topLimitY,
   };
-  for (let i = 0; i < linesNumber; i++) {
-    lines.push(
-      <line
-        x1={lineCoords.x1}
-        y1={lineCoords.y1}
-        x2={lineCoords.x2}
-        y2={lineCoords.y2}
-        stroke={style.color}
-        strokeWidth={style.width}
-      />
-    );
-    lineCoords.x1 += obliqueSeparation;
-    lineCoords.x2 += obliqueSeparation;
+  for (let i = 0; i <= linesNumber; i++) {
+    const endOutsideGuideline =
+      Math.round(lineCoords.x2, 2) > Math.round(startOblique.x + totalWidth, 2);
+    if (!endOutsideGuideline) {
+      lines.push(
+        <line
+          key={i}
+          x1={lineCoords.x1}
+          y1={lineCoords.y1}
+          x2={lineCoords.x2}
+          y2={lineCoords.y2}
+          stroke={style.color}
+          strokeWidth={style.width}
+        />
+      );
+      lineCoords.x1 += obliqueSeparation;
+      lineCoords.x2 += obliqueSeparation;
+    }
   }
   return <g>{lines}</g>;
 };
