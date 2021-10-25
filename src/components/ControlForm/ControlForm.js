@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ControlForm.module.css";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
-import { FaUndoAlt } from "react-icons/fa";
+import { FaQuestionCircle, FaUndoAlt } from "react-icons/fa";
 
 const ControlForm = (props) => {
   const handleInputChange = (evt) => {
@@ -279,20 +279,29 @@ const ControlForm = (props) => {
   return (
     <div className={styles.ControlForm} data-testid="ControlForm">
       <Form id="pageControl">
-        {xHeightFields()}
-        {ascenderFields()}
-        {capsFields()}
-        {descenderFields()}
-        {obliqueFields()}
-        <div className="d-grid gap-2 d-sm-flex">
+        <div className="d-grid gap-2 d-sm-flex justify-content-center">
           <Button
+            size="sm"
             variant="outline-secondary"
-            className="gap-3"
+            className="gap-3 mb-3"
             onClick={loadDefaults}
           >
             <FaUndoAlt /> Reiniciar
           </Button>
         </div>
+        {xHeightFields()}
+        {ascenderFields()}
+        {capsFields()}
+        {descenderFields()}
+        {obliqueFields()}
+        <Card>
+          <Card.Body>
+            <Card.Text>
+              <FaQuestionCircle className="text-primary" /> Las medidas están en
+              milímetros.
+            </Card.Text>
+          </Card.Body>
+        </Card>
       </Form>
     </div>
   );

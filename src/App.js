@@ -80,11 +80,10 @@ function App() {
             />
           </Col>
           <Col md="6" xl="8">
-            <Page config={pageConfig} printing={printing} ref={componentRef} />
-            <div className="text-center mb-3">
+            <div className="text-center my-3">
               <ReactToPrint
                 trigger={() => (
-                  <Button>
+                  <Button size="sm">
                     <FaPrint />
                     Imprimir
                   </Button>
@@ -98,6 +97,7 @@ function App() {
                 pageStyle="@page { size: A4 landscape;  margin: 0mm; } @media print { body { -webkit-print-color-adjust: exact; } }"
               />
             </div>
+            <Page config={pageConfig} printing={printing} ref={componentRef} />
           </Col>
         </Row>
       </Container>

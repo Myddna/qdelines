@@ -5,7 +5,7 @@ import styles from "./IntroHero.module.css";
 
 const IntroHero = () => (
   <div className={styles.IntroHero} data-testid="IntroHero">
-    <div className="px-4 py-5 my-5 text-center">
+    <div className="px-4 py-4 my-5 text-center">
       <div className="text-center">
         <GiPencilRuler size="3em" className="mb-2 ms-2" />
       </div>
