@@ -20,12 +20,30 @@ function App() {
     return Promise.resolve();
   };
   const handleOnBeforePrint = () => {
+    window.dataLayer.push({
+      event: "event",
+      eventProps: {
+        category: "guidelinesPrint",
+        action: "print",
+        label: "config",
+        value: JSON.stringify(pageConfig),
+      },
+    });
     setPrinting(false);
     return Promise.resolve();
   };
 
   // Config handling
   const handleResetConfig = () => {
+    window.dataLayer.push({
+      event: "event",
+      eventProps: {
+        category: "guidelines",
+        action: "reset",
+        label: "config",
+        value: JSON.stringify(pageConfig),
+      },
+    });
     setPageConfig(deepClone(PageDefaultProps));
   };
 

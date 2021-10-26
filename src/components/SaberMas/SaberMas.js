@@ -27,19 +27,19 @@ const SaberMas = () => (
           Si necesitas una guía para letra Carolina, con un ancho de plumilla de
           2mm y un ratio 3-4-3, como la aplicación toma milímetros, puedes
           configurarla con las siguientes distancias:
-          <ul>
-            <li>
-              Línea media: 2 * 4 = <strong>8</strong>{" "}
-              <span className="text-muted">
-                (2 es el ancho de la plumilla y 4 el ratio elegido)
-              </span>
-            </li>
-            <li>
-              Ascendentes y descendentes: 2 * 3 = <strong>6</strong>
-            </li>
-            <li>El resto de valores, como nos convenga en cada caso.</li>
-          </ul>
         </p>
+        <ul>
+          <li>
+            Línea media: 2 * 4 = <strong>8</strong>{" "}
+            <span className="text-muted">
+              (2 es el ancho de la plumilla y 4 el ratio elegido)
+            </span>
+          </li>
+          <li>
+            Ascendentes y descendentes: 2 * 3 = <strong>6</strong>
+          </li>
+          <li>El resto de valores, como nos convenga en cada caso.</li>
+        </ul>
       </div>
       <p>
         Las líneas pueden desactivarse poniendo su grosor o su distancia a 0.
