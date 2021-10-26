@@ -66,33 +66,36 @@ const LineSet = (props) => {
         strokeWidth={style.baseline.width}
       />
       {/** Descender */}
-      <line
-        x1={coordinates.x}
-        y1={
-          coordinates.y +
-          structure.ascender +
-          structure.xHeight +
-          structure.descender
-        }
-        x2={coordinates.x + totalWidth}
-        y2={
-          coordinates.y +
-          structure.ascender +
-          structure.xHeight +
-          structure.descender
-        }
-        stroke={style.descender.color}
-        strokeWidth={style.descender.width}
-      />
-      {/** Oblique */}
-      {drawObliques(
-        coordinates.y,
-        startOblique,
-        structure.obliqueSlant,
-        structure.obliqueSeparation,
-        totalWidth,
-        style.oblique
+      {structure.descender && (
+        <line
+          x1={coordinates.x}
+          y1={
+            coordinates.y +
+            structure.ascender +
+            structure.xHeight +
+            structure.descender
+          }
+          x2={coordinates.x + totalWidth}
+          y2={
+            coordinates.y +
+            structure.ascender +
+            structure.xHeight +
+            structure.descender
+          }
+          stroke={style.descender.color}
+          strokeWidth={style.descender.width}
+        />
       )}
+      {/** Oblique */}
+      {structure.obliqueSeparation > 0 &&
+        drawObliques(
+          coordinates.y,
+          startOblique,
+          structure.obliqueSlant,
+          structure.obliqueSeparation,
+          totalWidth,
+          style.oblique
+        )}
     </g>
   );
 };
@@ -107,7 +110,7 @@ const drawObliques = (
 ) => {
   const linesNumber = Math.floor(totalWidth / obliqueSeparation);
   const tanAlpha = Math.tan(convertToRadians(obliqueSlant));
-  console.log(totalWidth, obliqueSeparation, linesNumber);
+
   let lines = [];
   let computedY = startOblique.y - topLimitY;
   let computedX = computedY / tanAlpha;

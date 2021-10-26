@@ -52,6 +52,7 @@ const ControlForm = (props) => {
               type="number"
               name="lineSetStructure_separation"
               step="0.1"
+              min="0"
               onChange={handleInputChange}
               value={props.config.lineSetStructure.separation}
             />
@@ -96,6 +97,7 @@ const ControlForm = (props) => {
               type="number"
               name="lineSetStyle_baseline_width"
               step="0.1"
+              min="0"
               onChange={handleInputChange}
               value={props.config.lineSetStyle.baseline.width}
             />
@@ -120,6 +122,7 @@ const ControlForm = (props) => {
               type="number"
               name="lineSetStructure_xHeight"
               step="0.1"
+              min="1"
               onChange={handleInputChange}
               value={props.config.lineSetStructure.xHeight}
             />
@@ -139,6 +142,7 @@ const ControlForm = (props) => {
               type="number"
               name="lineSetStyle_median_width"
               step="0.1"
+              min="0"
               onChange={handleInputChange}
               value={props.config.lineSetStyle.median.width}
             />
@@ -163,6 +167,7 @@ const ControlForm = (props) => {
               type="number"
               name="lineSetStructure_ascender"
               step="0.1"
+              min="0"
               onChange={handleInputChange}
               value={props.config.lineSetStructure.ascender}
             />
@@ -184,6 +189,7 @@ const ControlForm = (props) => {
               type="number"
               name="lineSetStyle_ascender_width"
               step="0.1"
+              min="0"
               onChange={handleInputChange}
               value={props.config.lineSetStyle.ascender.width}
             />
@@ -206,6 +212,7 @@ const ControlForm = (props) => {
               type="number"
               name="lineSetStructure_caps"
               step="0.1"
+              min="0"
               onChange={handleInputChange}
               value={props.config.lineSetStructure.caps}
             />
@@ -225,6 +232,7 @@ const ControlForm = (props) => {
               type="number"
               name="lineSetStyle_caps_width"
               step="0.1"
+              min="0"
               onChange={handleInputChange}
               value={props.config.lineSetStyle.caps.width}
             />
@@ -249,6 +257,7 @@ const ControlForm = (props) => {
               type="number"
               name="lineSetStructure_descender"
               step="0.1"
+              min="0"
               onChange={handleInputChange}
               value={props.config.lineSetStructure.descender}
             />
@@ -272,6 +281,7 @@ const ControlForm = (props) => {
               type="number"
               name="lineSetStyle_descender_width"
               step="0.1"
+              min="0"
               onChange={handleInputChange}
               value={props.config.lineSetStyle.descender.width}
             />
@@ -296,6 +306,7 @@ const ControlForm = (props) => {
               type="number"
               name="lineSetStructure_obliqueSeparation"
               step="0.1"
+              min="1"
               onChange={handleInputChange}
               value={props.config.lineSetStructure.obliqueSeparation}
             />
@@ -330,6 +341,7 @@ const ControlForm = (props) => {
               type="number"
               name="lineSetStyle_oblique_width"
               step="0.1"
+              min="0"
               onChange={handleInputChange}
               value={props.config.lineSetStyle.oblique.width}
             />

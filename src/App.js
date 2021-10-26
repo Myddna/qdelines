@@ -90,7 +90,7 @@ function App() {
                 )}
                 content={() => componentRef.current}
                 bodyClass="linesPrinting"
-                documentTitle="QDE Lines"
+                documentTitle="CaliLíneas"
                 onBeforeGetContent={handleOnBeforeGetContent}
                 onBeforePrint={handleOnBeforePrint}
                 removeAfterPrint="true"

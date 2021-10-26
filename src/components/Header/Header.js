@@ -8,7 +8,7 @@ const Header = () => {
     <Navbar className={styles.Header} bg="light" expand="lg">
       <Container fluid>
         <Navbar.Brand as={Link} to="/">
-          QDE Lines
+          CaliLíneas <span className="text-muted fs-6">(beta)</span>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

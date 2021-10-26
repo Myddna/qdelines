@@ -45,12 +45,14 @@ export const getPageSize = (sizeName, orientation) => {
 export const calculateRepetitions = (size, lineSetStructure) => {
   const lineSetHeight = calculateLineSetHeight(lineSetStructure);
 
-  const repetitions = Math.floor(
-    (size.height - lineSetStructure.separation) /
-      (lineSetHeight + lineSetStructure.separation)
-  );
-
-  return repetitions;
+  if (lineSetHeight + lineSetStructure.separation > 0) {
+    return Math.floor(
+      (size.height - lineSetStructure.separation) /
+        (lineSetHeight + lineSetStructure.separation)
+    );
+  } else {
+    return 0;
+  }
 };
 
 export const calculateLineSetHeight = (lineSetStructure) => {

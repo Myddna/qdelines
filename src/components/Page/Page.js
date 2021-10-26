@@ -52,6 +52,10 @@ const Page = forwardRef((props, ref) => {
   const initialYOffset =
     (pageContentMeasures.height - fullSvgHeight) / 2 + 10 - 2;
 
+  if (groupRepetitions <= 0) {
+    return <svg></svg>;
+  }
+
   return (
     <svg
       ref={ref}
@@ -85,9 +89,9 @@ const Page = forwardRef((props, ref) => {
         x="10"
         className="signature"
       >
-        Guías generadas con QDE Lines -{" "}
-        <a href="https://lines.quedemoniosescribo.art">
-          https://lines.quedemoniosescribo.art
+        Guías generadas con CaliLíneas -{" "}
+        <a href="https://calilineas.quedemoniosescribo.art">
+          https://calilineas.quedemoniosescribo.art
         </a>
       </text>
     </svg>

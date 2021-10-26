@@ -2,12 +2,6 @@
   padding: 1rem 0;
 }
 
-/*
-.ControlForm input[type="number"] {
-  max-width: 5rem;
-}
-*/
-
 .ControlForm input[type="color"] {
   width: 100%;
 }

@@ -10,3 +10,14 @@
 .helpModal {
   min-width: 40vw;
 }
+
+.highlighted-block {
+  background-color: #f2641942;
+  padding: 1rem 1.2rem;
+  border-radius: 0.3rem;
+  margin: 1rem 0;
+}
+
+.highlighted-block p:last-child {
+  margin-bottom: 0;
+}
