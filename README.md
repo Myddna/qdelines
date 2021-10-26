@@ -1,4 +1,4 @@
-# QDE Lines
+# CaliLíneas - Generador de guías para caligrafía
 
 Generador de guías para caligrafía configurable.
 
