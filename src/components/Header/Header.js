@@ -1,17 +1,25 @@
 import React from "react";
 import styles from "./Header.module.css";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <Navbar className={styles.Header} bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand as="h1">QDE Lines</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">
+          QDE Lines
+        </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Inicio</Nav.Link>
-            <Nav.Link href="#link">Qué es esto</Nav.Link>
+            <Nav.Link to="/saber-mas" as={Link}>
+              Saber más
+            </Nav.Link>
+            <Nav.Link to="/la-autora" as={Link}>
+              La autora
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

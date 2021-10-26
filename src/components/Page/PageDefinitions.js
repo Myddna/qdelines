@@ -72,7 +72,7 @@ export const PageDefaultProps = {
     ascender: 6,
     descender: 6,
     caps: 5,
-    separation: 8,
+    separation: 5,
     obliqueSlant: 55,
     obliqueSeparation: 16,
   },

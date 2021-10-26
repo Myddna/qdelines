@@ -56,7 +56,6 @@ const Page = forwardRef((props, ref) => {
     <svg
       ref={ref}
       className={`${styles.Page} thePage`}
-      data-testid="Page"
       viewBox={`0 0 ${pageMeasures.width} ${pageMeasures.height}`}
       xmlns="http://www.w3.org/2000/svg"
       style={style}

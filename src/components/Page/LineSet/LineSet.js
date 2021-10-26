@@ -15,7 +15,7 @@ const LineSet = (props) => {
       structure.descender,
   };
   return (
-    <g data-testid="LineSet">
+    <g>
       {/** Ascender */}
       {structure.ascender && (
         <line

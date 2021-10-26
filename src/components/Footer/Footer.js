@@ -4,7 +4,7 @@ import styles from "./Footer.module.css";
 import { Button } from "react-bootstrap";
 
 const Footer = () => (
-  <div className={styles.Footer} data-testid="Footer">
+  <div className={styles.Footer}>
     <Button
       href="https://github.com/Myddna/qdelines"
       target="_blank"
