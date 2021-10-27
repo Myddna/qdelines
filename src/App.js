@@ -29,6 +29,7 @@ function App() {
     setPageConfig(deepClone(PageDefaultProps));
   };
 
+  // Input change handling
   const handleInputChange = (evt) => {
     const target = evt.target;
     const name = target.name;
@@ -63,6 +64,38 @@ function App() {
     });
   };
 
+  // Optional lines enable/disable
+  const handleToggleOptional = (show) => {
+    setPageConfig((previousState) => {
+      const newState = { ...previousState };
+
+      if (show) {
+        // Line position
+        newState.lineSetStructure.auxAscender =
+          newState.lineSetStructure.ascender - 1;
+        newState.lineSetStructure.auxDescender =
+          newState.lineSetStructure.descender - 1;
+        newState.lineSetStructure.aux1 =
+          newState.lineSetStructure.xHeight - 1.5;
+        newState.lineSetStructure.aux2 = 1.5;
+
+        // Line style
+        newState.lineSetStyle.auxAscender.width = 0.3;
+        newState.lineSetStyle.auxDescender.width = 0.3;
+        newState.lineSetStyle.aux1.width = 0.3;
+        newState.lineSetStyle.aux2.width = 0.3;
+      } else {
+        // Line style
+        newState.lineSetStyle.auxAscender.width = 0;
+        newState.lineSetStyle.auxDescender.width = 0;
+        newState.lineSetStyle.aux1.width = 0;
+        newState.lineSetStyle.aux2.width = 0;
+      }
+
+      return newState;
+    });
+  };
+
   // States
   const [printing, setPrinting] = useState(false);
   const [pageConfig, setPageConfig] = useState(initialPageConfig);
@@ -77,6 +110,7 @@ function App() {
               config={pageConfig}
               resetConfig={handleResetConfig}
               inputChange={handleInputChange}
+              toggleOptional={handleToggleOptional}
             />
           </Col>
           <Col md="6" xl="8">

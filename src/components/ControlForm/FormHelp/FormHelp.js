@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { FaQuestionCircle } from "react-icons/fa";
-import helpImage from "./../../../assets/helpGuideline_v2.svg";
+import helpImage from "./../../../assets/helpGuideline_v3.svg";
 
 const FormHelp = () => {
   const [show, setShow] = useState(false);

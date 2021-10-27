@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ControlForm.module.css";
-import { Form, Button, Row, Col, Card } from "react-bootstrap";
-import { FaQuestionCircle, FaUndoAlt } from "react-icons/fa";
+import { Form, Button, Row, Col, Card, Collapse } from "react-bootstrap";
+import {
+  FaArrowUp,
+  FaArrowDown,
+  FaQuestionCircle,
+  FaUndoAlt,
+} from "react-icons/fa";
 import FormSectionTitle from "./FormSectionTitle/FormSectionTitle";
 import FormHelp from "./FormHelp/FormHelp";
 
@@ -199,42 +204,97 @@ const ControlForm = (props) => {
     );
   };
 
-  const capsFields = () => {
+  const auxAscenderFields = () => {
     return (
       <div>
         <FormSectionTitle as="h2" className="h5">
-          Mayúsculas
+          Auxiliar de ascendentes
         </FormSectionTitle>
         <Row className="mb-4">
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStructure_caps">Distancia</Form.Label>
+            <Form.Label htmlFor="lineSetStructure_auxAscender">
+              Distancia
+            </Form.Label>
             <Form.Control
               type="number"
-              name="lineSetStructure_caps"
+              name="lineSetStructure_auxAscender"
               step="0.1"
               min="0"
               onChange={handleInputChange}
-              value={props.config.lineSetStructure.caps}
+              value={props.config.lineSetStructure.auxAscender}
             />
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStyle_caps_color">Color</Form.Label>
+            <Form.Label htmlFor="lineSetStyle_auxAscender_color">
+              Color
+            </Form.Label>
             <Form.Control
               type="color"
-              name="lineSetStyle_caps_color"
+              name="lineSetStyle_auxAscender_color"
               onChange={handleInputChange}
-              value={props.config.lineSetStyle.caps.color}
+              value={props.config.lineSetStyle.auxAscender.color}
             />
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStyle_caps_width">Grosor</Form.Label>
+            <Form.Label htmlFor="lineSetStyle_auxAscender_width">
+              Grosor
+            </Form.Label>
             <Form.Control
               type="number"
-              name="lineSetStyle_caps_width"
+              name="lineSetStyle_auxAscender_width"
               step="0.1"
               min="0"
               onChange={handleInputChange}
-              value={props.config.lineSetStyle.caps.width}
+              value={props.config.lineSetStyle.auxAscender.width}
+            />
+          </Form.Group>
+        </Row>
+      </div>
+    );
+  };
+
+  const auxDescenderFields = () => {
+    return (
+      <div>
+        <FormSectionTitle as="h2" className="h5">
+          Auxiliar de descendentes
+        </FormSectionTitle>
+        <Row className="mb-4">
+          <Form.Group as={Col} sm="6" md>
+            <Form.Label htmlFor="lineSetStructure_auxDescender">
+              Distancia
+            </Form.Label>
+            <Form.Control
+              type="number"
+              name="lineSetStructure_auxDescender"
+              step="0.1"
+              min="0"
+              onChange={handleInputChange}
+              value={props.config.lineSetStructure.auxDescender}
+            />
+          </Form.Group>
+          <Form.Group as={Col} sm="6" md>
+            <Form.Label htmlFor="lineSetStyle_auxDescender_color">
+              Color
+            </Form.Label>
+            <Form.Control
+              type="color"
+              name="lineSetStyle_auxDescender_color"
+              onChange={handleInputChange}
+              value={props.config.lineSetStyle.auxDescender.color}
+            />
+          </Form.Group>
+          <Form.Group as={Col} sm="6" md>
+            <Form.Label htmlFor="lineSetStyle_auxDescender_width">
+              Grosor
+            </Form.Label>
+            <Form.Control
+              type="number"
+              name="lineSetStyle_auxDescender_width"
+              step="0.1"
+              min="0"
+              onChange={handleInputChange}
+              value={props.config.lineSetStyle.auxDescender.width}
             />
           </Form.Group>
         </Row>
@@ -351,6 +411,94 @@ const ControlForm = (props) => {
     );
   };
 
+  const aux1Fields = () => {
+    return (
+      <div>
+        <FormSectionTitle as="h2" className="h5">
+          Auxiliar central 1
+        </FormSectionTitle>
+        <Row className="mb-4">
+          <Form.Group as={Col} sm="6" md>
+            <Form.Label htmlFor="lineSetStructure_aux1">Distancia</Form.Label>
+            <Form.Control
+              type="number"
+              name="lineSetStructure_aux1"
+              step="0.1"
+              min="0"
+              onChange={handleInputChange}
+              value={props.config.lineSetStructure.aux1}
+            />
+          </Form.Group>
+          <Form.Group as={Col} sm="6" md>
+            <Form.Label htmlFor="lineSetStyle_aux1_color">Color</Form.Label>
+            <Form.Control
+              type="color"
+              name="lineSetStyle_aux1_color"
+              onChange={handleInputChange}
+              value={props.config.lineSetStyle.aux1.color}
+            />
+          </Form.Group>
+          <Form.Group as={Col} sm="6" md>
+            <Form.Label htmlFor="lineSetStyle_aux1_width">Grosor</Form.Label>
+            <Form.Control
+              type="number"
+              name="lineSetStyle_aux1_width"
+              step="0.1"
+              min="0"
+              onChange={handleInputChange}
+              value={props.config.lineSetStyle.aux1.width}
+            />
+          </Form.Group>
+        </Row>
+      </div>
+    );
+  };
+
+  const aux2Fields = () => {
+    return (
+      <div>
+        <FormSectionTitle as="h2" className="h5">
+          Auxiliar central 2
+        </FormSectionTitle>
+        <Row className="mb-4">
+          <Form.Group as={Col} sm="6" md>
+            <Form.Label htmlFor="lineSetStructure_aux2">Distancia</Form.Label>
+            <Form.Control
+              type="number"
+              name="lineSetStructure_aux2"
+              step="0.1"
+              min="0"
+              onChange={handleInputChange}
+              value={props.config.lineSetStructure.aux2}
+            />
+          </Form.Group>
+          <Form.Group as={Col} sm="6" md>
+            <Form.Label htmlFor="lineSetStyle_aux2_color">Color</Form.Label>
+            <Form.Control
+              type="color"
+              name="lineSetStyle_aux2_color"
+              onChange={handleInputChange}
+              value={props.config.lineSetStyle.aux2.color}
+            />
+          </Form.Group>
+          <Form.Group as={Col} sm="6" md>
+            <Form.Label htmlFor="lineSetStyle_aux2_width">Grosor</Form.Label>
+            <Form.Control
+              type="number"
+              name="lineSetStyle_aux2_width"
+              step="0.1"
+              min="0"
+              onChange={handleInputChange}
+              value={props.config.lineSetStyle.aux2.width}
+            />
+          </Form.Group>
+        </Row>
+      </div>
+    );
+  };
+
+  const [open, setOpen] = useState(false);
+
   return (
     <div className={styles.ControlForm}>
       <Form id="pageControl">
@@ -369,9 +517,37 @@ const ControlForm = (props) => {
         {baselineFields()}
         {medianFields()}
         {ascenderFields()}
-        {capsFields()}
         {descenderFields()}
         {obliqueFields()}
+        <div className="text-center my-3">
+          <Button
+            onClick={() => {
+              props.toggleOptional(!open);
+              setOpen(!open);
+            }}
+            aria-controls="optional-fields"
+            aria-expanded={open}
+          >
+            {open ? (
+              <div>
+                <FaArrowUp /> Ocultar opcionales
+              </div>
+            ) : (
+              <div>
+                <FaArrowDown /> Mostrar opcionales
+              </div>
+            )}
+          </Button>
+        </div>
+        <Collapse in={open}>
+          <div id="optional-fields">
+            {auxAscenderFields()}
+            {auxDescenderFields()}
+            {aux1Fields()}
+            {aux2Fields()}
+          </div>
+        </Collapse>
+
         <Card>
           <Card.Body>
             <Card.Text>

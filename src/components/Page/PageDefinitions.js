@@ -73,7 +73,10 @@ export const PageDefaultProps = {
     xHeight: 8,
     ascender: 6,
     descender: 6,
-    caps: 5,
+    auxAscender: 5,
+    auxDescender: 5,
+    aux1: 6.5,
+    aux2: 1.5,
     separation: 5,
     obliqueSlant: 55,
     obliqueSeparation: 16,
@@ -95,9 +98,21 @@ export const PageDefaultProps = {
       color: "#000000",
       width: 0.3,
     },
-    caps: {
+    auxAscender: {
       color: "#de3c4b",
-      width: 0.3,
+      width: 0,
+    },
+    auxDescender: {
+      color: "#de3c4b",
+      width: 0,
+    },
+    aux1: {
+      color: "#00799E",
+      width: 0,
+    },
+    aux2: {
+      color: "#00799E",
+      width: 0,
     },
     oblique: {
       color: "#616161",
@@ -124,7 +139,13 @@ export const PagePropTypes = {
       validatePositiveNumber(props, propName, componentName),
     descender: (props, propName, componentName) =>
       validatePositiveNumber(props, propName, componentName),
-    caps: (props, propName, componentName) =>
+    auxAscender: (props, propName, componentName) =>
+      validatePositiveNumber(props, propName, componentName),
+    auxDescender: (props, propName, componentName) =>
+      validatePositiveNumber(props, propName, componentName),
+    aux1: (props, propName, componentName) =>
+      validatePositiveNumber(props, propName, componentName),
+    aux2: (props, propName, componentName) =>
       validatePositiveNumber(props, propName, componentName),
     separation: (props, propName, componentName) =>
       validatePositiveNumber(props, propName, componentName),

@@ -27,15 +27,18 @@ const LineSet = (props) => {
           strokeWidth={style.ascender.width}
         />
       )}
-      {/** Caps */}
-      {structure.caps && (
+      {/** Aux Ascender */}
+      {structure.auxAscender && (
         <line
           x1={coordinates.x}
-          y1={coordinates.y + (structure.ascender - structure.caps)}
+          y1={coordinates.y + (structure.ascender - structure.auxAscender)}
           x2={coordinates.x + totalWidth}
-          y2={coordinates.y + (structure.ascender - structure.caps)}
-          stroke={style.caps.color}
-          strokeWidth={style.caps.width}
+          y2={coordinates.y + (structure.ascender - structure.auxAscender)}
+          stroke={style.auxAscender.color}
+          strokeWidth={style.auxAscender.width}
+          strokeDasharray={`${style.auxAscender.width * 2} ${
+            style.auxAscender.width
+          }`}
         />
       )}
       {/** Median */}
@@ -86,6 +89,30 @@ const LineSet = (props) => {
           strokeWidth={style.descender.width}
         />
       )}
+      {/** Aux Descender*/}
+      {structure.auxDescender && (
+        <line
+          x1={coordinates.x}
+          y1={
+            coordinates.y +
+            structure.ascender +
+            structure.xHeight +
+            structure.auxDescender
+          }
+          x2={coordinates.x + totalWidth}
+          y2={
+            coordinates.y +
+            structure.ascender +
+            structure.xHeight +
+            structure.auxDescender
+          }
+          stroke={style.auxDescender.color}
+          strokeWidth={style.auxDescender.width}
+          strokeDasharray={`${style.auxDescender.width * 2} ${
+            style.auxDescender.width
+          }`}
+        />
+      )}
       {/** Oblique */}
       {structure.obliqueSeparation > 0 &&
         drawObliques(
@@ -96,6 +123,49 @@ const LineSet = (props) => {
           totalWidth,
           style.oblique
         )}
+      {/** Aux lines */}
+      {structure.aux1 && (
+        <line
+          x1={coordinates.x}
+          y1={
+            coordinates.y +
+            structure.ascender +
+            structure.xHeight -
+            structure.aux1
+          }
+          x2={coordinates.x + totalWidth}
+          y2={
+            coordinates.y +
+            structure.ascender +
+            structure.xHeight -
+            structure.aux1
+          }
+          stroke={style.aux1.color}
+          strokeWidth={style.aux1.width}
+          strokeDasharray={`${style.aux1.width * 2} ${style.aux1.width}`}
+        />
+      )}
+      {structure.aux2 && (
+        <line
+          x1={coordinates.x}
+          y1={
+            coordinates.y +
+            structure.ascender +
+            structure.xHeight -
+            structure.aux2
+          }
+          x2={coordinates.x + totalWidth}
+          y2={
+            coordinates.y +
+            structure.ascender +
+            structure.xHeight -
+            structure.aux2
+          }
+          stroke={style.aux2.color}
+          strokeWidth={style.aux2.width}
+          strokeDasharray={`${style.aux2.width * 2} ${style.aux2.width}`}
+        />
+      )}
     </g>
   );
 };
