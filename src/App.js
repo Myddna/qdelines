@@ -114,7 +114,7 @@ function App() {
             />
           </Col>
           <Col md="6" xl="8">
-            <div className="text-center py-3 sticky-lg-top">
+            <div className="text-center py-3 sticky-md-top">
               <ReactToPrint
                 trigger={() => (
                   <Button size="sm">
