@@ -114,7 +114,7 @@ function App() {
             />
           </Col>
           <Col md="6" xl="8">
-            <div className="text-center my-3">
+            <div className="text-center py-3 sticky-lg-top">
               <ReactToPrint
                 trigger={() => (
                   <Button size="sm">
@@ -130,8 +130,13 @@ function App() {
                 removeAfterPrint="true"
                 pageStyle="@page { margin: 0mm; } @media print { body { -webkit-print-color-adjust: exact; } }"
               />
+
+              <Page
+                config={pageConfig}
+                printing={printing}
+                ref={componentRef}
+              />
             </div>
-            <Page config={pageConfig} printing={printing} ref={componentRef} />
           </Col>
         </Row>
       </Container>
