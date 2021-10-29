@@ -9,8 +9,11 @@ import {
 } from "react-icons/fa";
 import FormSectionTitle from "./FormSectionTitle/FormSectionTitle";
 import FormHelp from "./FormHelp/FormHelp";
+import { useTranslation } from "react-i18next";
 
 const ControlForm = (props) => {
+  const { t } = useTranslation();
+
   const handleInputChange = (evt) => {
     props.inputChange(evt);
   };
@@ -23,11 +26,13 @@ const ControlForm = (props) => {
     return (
       <div>
         <FormSectionTitle as="h2" className="h5">
-          Estructura general
+          {t("ui.cform.structure")}
         </FormSectionTitle>
         <Row className="mb-4">
           <Form.Group as={Col} sm="4" md>
-            <Form.Label htmlFor="sizeName">Tamaño del papel</Form.Label>
+            <Form.Label htmlFor="sizeName">
+              {t("ui.cform.papersize")}
+            </Form.Label>
             <Form.Select
               name="sizeName"
               onChange={handleInputChange}
@@ -39,19 +44,21 @@ const ControlForm = (props) => {
             </Form.Select>
           </Form.Group>
           <Form.Group as={Col} sm="4" md>
-            <Form.Label htmlFor="orientation">Orientación</Form.Label>
+            <Form.Label htmlFor="orientation">
+              {t("ui.cform.orientation")}
+            </Form.Label>
             <Form.Select
               name="orientation"
               onChange={handleInputChange}
               value={props.config.orientation}
             >
-              <option value="landscape">Horizontal</option>
-              <option value="portrait">Vertical</option>
+              <option value="landscape">{t("ui.cform.landscape")}</option>
+              <option value="portrait">{t("ui.cform.portrait")}</option>
             </Form.Select>
           </Form.Group>
           <Form.Group as={Col} sm="4" md>
             <Form.Label htmlFor="lineSetStructure_separation">
-              Interlineado
+              {t("ui.cform.linespacing")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -71,12 +78,12 @@ const ControlForm = (props) => {
     return (
       <div>
         <FormSectionTitle as="h2" className="h5">
-          Línea base
+          {t("ui.cform.baseline")}
         </FormSectionTitle>
         <Row className="mb-4">
           <Form.Group as={Col}>
             <Form.Label htmlFor="lineSetStructure_reference">
-              Distancia (Referencia)
+              {t("ui.cform.distancereference")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -86,7 +93,9 @@ const ControlForm = (props) => {
             />
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStyle_baseline_color">Color</Form.Label>
+            <Form.Label htmlFor="lineSetStyle_baseline_color">
+              {t("ui.cform.color")}
+            </Form.Label>
             <Form.Control
               type="color"
               name="lineSetStyle_baseline_color"
@@ -96,7 +105,7 @@ const ControlForm = (props) => {
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStyle_baseline_width">
-              Grosor línea base
+              {t("ui.cform.linewidth")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -116,12 +125,12 @@ const ControlForm = (props) => {
     return (
       <div>
         <FormSectionTitle as="h2" className="h5">
-          Línea media
+          {t("ui.cform.middleline")}
         </FormSectionTitle>
         <Row className="mb-4">
           <Form.Group as={Col}>
             <Form.Label htmlFor="lineSetStructure_xHeight">
-              Distancia
+              {t("ui.cform.distance")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -133,7 +142,9 @@ const ControlForm = (props) => {
             />
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStyle_median_color">Color</Form.Label>
+            <Form.Label htmlFor="lineSetStyle_median_color">
+              {t("ui.cform.color")}
+            </Form.Label>
             <Form.Control
               type="color"
               name="lineSetStyle_median_color"
@@ -142,7 +153,9 @@ const ControlForm = (props) => {
             />
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStyle_median_width">Grosor</Form.Label>
+            <Form.Label htmlFor="lineSetStyle_median_width">
+              {t("ui.cform.linewidth")}
+            </Form.Label>
             <Form.Control
               type="number"
               name="lineSetStyle_median_width"
@@ -161,12 +174,12 @@ const ControlForm = (props) => {
     return (
       <div>
         <FormSectionTitle as="h2" className="h5">
-          Ascendentes
+          {t("ui.cform.ascenders")}
         </FormSectionTitle>
         <Row className="mb-4">
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStructure_ascender">
-              Distancia
+              {t("ui.cform.distance")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -178,7 +191,9 @@ const ControlForm = (props) => {
             />
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStyle_ascender_color">Color</Form.Label>
+            <Form.Label htmlFor="lineSetStyle_ascender_color">
+              {t("ui.cform.color")}
+            </Form.Label>
             <Form.Control
               type="color"
               name="lineSetStyle_ascender_color"
@@ -188,7 +203,7 @@ const ControlForm = (props) => {
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStyle_ascender_width">
-              Grosor
+              {t("ui.cform.linewidth")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -208,12 +223,12 @@ const ControlForm = (props) => {
     return (
       <div>
         <FormSectionTitle as="h2" className="h5">
-          Auxiliar de ascendentes
+          {t("ui.cform.descenders")}
         </FormSectionTitle>
         <Row className="mb-4">
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStructure_auxAscender">
-              Distancia
+              {t("ui.cform.distance")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -226,7 +241,7 @@ const ControlForm = (props) => {
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStyle_auxAscender_color">
-              Color
+              {t("ui.cform.color")}
             </Form.Label>
             <Form.Control
               type="color"
@@ -237,7 +252,7 @@ const ControlForm = (props) => {
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStyle_auxAscender_width">
-              Grosor
+              {t("ui.cform.linewidth")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -257,12 +272,12 @@ const ControlForm = (props) => {
     return (
       <div>
         <FormSectionTitle as="h2" className="h5">
-          Auxiliar de descendentes
+          {t("ui.cform.auxascenders")}
         </FormSectionTitle>
         <Row className="mb-4">
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStructure_auxDescender">
-              Distancia
+              {t("ui.cform.distance")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -275,7 +290,7 @@ const ControlForm = (props) => {
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStyle_auxDescender_color">
-              Color
+              {t("ui.cform.color")}
             </Form.Label>
             <Form.Control
               type="color"
@@ -286,7 +301,7 @@ const ControlForm = (props) => {
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStyle_auxDescender_width">
-              Grosor
+              {t("ui.cform.linewidth")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -306,12 +321,12 @@ const ControlForm = (props) => {
     return (
       <div>
         <FormSectionTitle as="h2" className="h5">
-          Descendentes
+          {t("ui.cform.descenders")}
         </FormSectionTitle>
         <Row className="mb-4">
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStructure_descender">
-              Distancia
+              {t("ui.cform.distance")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -324,7 +339,7 @@ const ControlForm = (props) => {
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStyle_descender_color">
-              Color
+              {t("ui.cform.color")}
             </Form.Label>
             <Form.Control
               type="color"
@@ -335,7 +350,7 @@ const ControlForm = (props) => {
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStyle_descender_width">
-              Grosor
+              {t("ui.cform.linewidth")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -355,12 +370,12 @@ const ControlForm = (props) => {
     return (
       <div>
         <FormSectionTitle as="h2" className="h5">
-          Oblicuas
+          {t("ui.cform.oblique")}
         </FormSectionTitle>
         <Row className="mb-4">
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStructure_obliqueSeparation">
-              Separación
+              {t("ui.cform.separation")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -373,7 +388,7 @@ const ControlForm = (props) => {
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
             <Form.Label htmlFor="lineSetStructure_obliqueSlant">
-              Inclinación
+              {t("ui.cform.slant")}
             </Form.Label>
             <Form.Control
               type="number"
@@ -387,7 +402,9 @@ const ControlForm = (props) => {
             />
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStyle_oblique_color">Color</Form.Label>
+            <Form.Label htmlFor="lineSetStyle_oblique_color">
+              {t("ui.cform.color")}
+            </Form.Label>
             <Form.Control
               type="color"
               name="lineSetStyle_oblique_color"
@@ -396,7 +413,9 @@ const ControlForm = (props) => {
             />
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStyle_oblique_width">Grosor</Form.Label>
+            <Form.Label htmlFor="lineSetStyle_oblique_width">
+              {t("ui.cform.linewidth")}
+            </Form.Label>
             <Form.Control
               type="number"
               name="lineSetStyle_oblique_width"
@@ -415,11 +434,13 @@ const ControlForm = (props) => {
     return (
       <div>
         <FormSectionTitle as="h2" className="h5">
-          Auxiliar central 1
+          {t("ui.cform.auxcentral1")}
         </FormSectionTitle>
         <Row className="mb-4">
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStructure_aux1">Distancia</Form.Label>
+            <Form.Label htmlFor="lineSetStructure_aux1">
+              {t("ui.cform.distance")}
+            </Form.Label>
             <Form.Control
               type="number"
               name="lineSetStructure_aux1"
@@ -430,7 +451,9 @@ const ControlForm = (props) => {
             />
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStyle_aux1_color">Color</Form.Label>
+            <Form.Label htmlFor="lineSetStyle_aux1_color">
+              {t("ui.cform.color")}
+            </Form.Label>
             <Form.Control
               type="color"
               name="lineSetStyle_aux1_color"
@@ -439,7 +462,9 @@ const ControlForm = (props) => {
             />
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStyle_aux1_width">Grosor</Form.Label>
+            <Form.Label htmlFor="lineSetStyle_aux1_width">
+              {t("ui.cform.linewidth")}
+            </Form.Label>
             <Form.Control
               type="number"
               name="lineSetStyle_aux1_width"
@@ -458,11 +483,13 @@ const ControlForm = (props) => {
     return (
       <div>
         <FormSectionTitle as="h2" className="h5">
-          Auxiliar central 2
+          {t("ui.cform.auxcentral2")}
         </FormSectionTitle>
         <Row className="mb-4">
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStructure_aux2">Distancia</Form.Label>
+            <Form.Label htmlFor="lineSetStructure_aux2">
+              {t("ui.cform.distance")}
+            </Form.Label>
             <Form.Control
               type="number"
               name="lineSetStructure_aux2"
@@ -473,7 +500,9 @@ const ControlForm = (props) => {
             />
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStyle_aux2_color">Color</Form.Label>
+            <Form.Label htmlFor="lineSetStyle_aux2_color">
+              {t("ui.cform.color")}
+            </Form.Label>
             <Form.Control
               type="color"
               name="lineSetStyle_aux2_color"
@@ -482,7 +511,9 @@ const ControlForm = (props) => {
             />
           </Form.Group>
           <Form.Group as={Col} sm="6" md>
-            <Form.Label htmlFor="lineSetStyle_aux2_width">Grosor</Form.Label>
+            <Form.Label htmlFor="lineSetStyle_aux2_width">
+              {t("ui.cform.linewidth")}
+            </Form.Label>
             <Form.Control
               type="number"
               name="lineSetStyle_aux2_width"
@@ -509,7 +540,7 @@ const ControlForm = (props) => {
             className="mb-3"
             onClick={loadDefaults}
           >
-            <FaUndoAlt /> Reiniciar
+            <FaUndoAlt /> {t("ui.reset")}
           </Button>
           <FormHelp />
         </div>
@@ -530,11 +561,12 @@ const ControlForm = (props) => {
           >
             {open ? (
               <div>
-                <FaArrowUp /> Ocultar opcionales
+                <FaArrowUp />
+                {t("ui.cform.hideoptional")}
               </div>
             ) : (
               <div>
-                <FaArrowDown /> Mostrar opcionales
+                <FaArrowDown /> {t("ui.cform.showoptional")}
               </div>
             )}
           </Button>
@@ -551,12 +583,12 @@ const ControlForm = (props) => {
         <Card>
           <Card.Body>
             <Card.Text>
-              <FaQuestionCircle className="text-primary" /> Las medidas están en
-              milímetros.
+              <FaQuestionCircle className="text-primary" />{" "}
+              {t("ui.cform.help.measures")}
             </Card.Text>
             <Card.Text>
-              <FaQuestionCircle className="text-primary" /> Para desactivar una
-              línea concreta, pon su grosor a 0.
+              <FaQuestionCircle className="text-primary" />{" "}
+              {t("ui.cform.help.deactivate")}
             </Card.Text>
           </Card.Body>
         </Card>

@@ -9,16 +9,20 @@ import { FaPrint } from "react-icons/fa";
 import { PageDefaultProps } from "./components/Page/PageDefinitions";
 import IntroHero from "./components/IntroHero/IntroHero";
 import { deepClone } from "./util/util";
+import { useTranslation } from "react-i18next";
 
 const initialPageConfig = deepClone(PageDefaultProps);
 
 function App() {
   // Using react-to-print:
   const componentRef = useRef();
+  const { t } = useTranslation();
+
   const handleOnBeforeGetContent = () => {
     setPrinting(true);
     return Promise.resolve();
   };
+
   const handleOnBeforePrint = () => {
     setPrinting(false);
     return Promise.resolve();
@@ -119,7 +123,7 @@ function App() {
                 trigger={() => (
                   <Button size="sm">
                     <FaPrint />
-                    Imprimir
+                    {t("ui.print")}
                   </Button>
                 )}
                 content={() => componentRef.current}

@@ -1,0 +1,49 @@
+{
+  "ui": {
+    "language": "Idioma",
+    "tagline": "Generador de guías caligráficas",
+    "print": "Imprimir",
+    "reset": "Reiniciar",
+    "help": "Ayuda",
+    "cform": {
+      "structure": "Estructura general",
+      "papersize": "Tamaño del papel",
+      "orientation": "Orientación",
+      "landscape": "Horizontal",
+      "portrait": "Vertical",
+      "linespacing": "Interlineado",
+      "baseline": "Línea base",
+      "distancereference": "Distancia (Referencia)",
+      "distance": "Distancia",
+      "color": "Color",
+      "linewidth": "Grosor",
+      "middleline": "Línea media",
+      "ascenders": "Ascendentes",
+      "descenders": "Descendentes",
+      "oblique": "Oblícuas",
+      "separation": "Separación",
+      "slant": "Inclinación",
+      "showoptional": "Mostrar opcionales",
+      "hideoptional": "Ocultar opcionales",
+      "auxascenders": "Auxiliar de ascendentes",
+      "auxdescenders": "Auxiliar de descendentes",
+      "auxcentral1": "Auxiliar central 1",
+      "auxcentral2": "Auxiliar central 2",
+      "help": {
+        "measures": "Las medidas están en milímetros",
+        "deactivate": "Para desactivar una línea concreta, pon su grosor a 0"
+      }
+    }
+  },
+  "svg": {
+    "credit": "Guías generadas con CaliLíneas"
+  },
+  "page": {
+    "knowmore": {
+      "title": "Saber más"
+    },
+    "author": {
+      "title": "La autora"
+    }
+  }
+}

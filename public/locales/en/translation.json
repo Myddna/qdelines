@@ -1,0 +1,49 @@
+{
+  "ui": {
+    "language": "Language",
+    "tagline": "Calligraphy guidelines generator",
+    "print": "Print",
+    "reset": "Reset",
+    "help": "Help",
+    "cform": {
+      "structure": "General structure",
+      "papersize": "Paper size",
+      "orientation": "Orientation",
+      "landscape": "Landscape",
+      "portrait": "Portrait",
+      "linespacing": "Line spacing",
+      "baseline": "Baseline",
+      "distancereference": "Distance (Reference)",
+      "distance": "Distance",
+      "color": "Color",
+      "linewidth": "Line width",
+      "middleline": "Middle line",
+      "ascenders": "Ascenders",
+      "descenders": "Descenders",
+      "oblique": "Oblique lines",
+      "separation": "Separation",
+      "slant": "Slant",
+      "showoptional": "Show optional",
+      "hideoptional": "Hide optional",
+      "auxascenders": "Ascender auxiliary line",
+      "auxdescenders": "Descender auxiliary line",
+      "auxcentral1": "Central auxiliary 1",
+      "auxcentral2": "Central auxiliary 2",
+      "help": {
+        "measures": "All measures are expressed in milimeters",
+        "deactivate": "If you want to deactivate a line, set it's line width to 0"
+      }
+    }
+  },
+  "svg": {
+    "credit": "Guidelines generated with CaliLíneas"
+  },
+  "page": {
+    "knowmore": {
+      "title": "Know more"
+    },
+    "author": {
+      "title": "The author"
+    }
+  }
+}

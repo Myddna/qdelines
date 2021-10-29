@@ -1,13 +1,25 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { FaQuestionCircle } from "react-icons/fa";
-import helpImage from "./../../../assets/helpGuideline_v3.svg";
+import { useTranslation } from "react-i18next";
+
+// Localized images
+import helpImage_es from "./../../../assets/helpGuideline_es.svg";
+import helpImage_en from "./../../../assets/helpGuideline_en.svg";
+
+const helpImage = {
+  es: helpImage_es,
+  en: helpImage_en,
+};
 
 const FormHelp = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <Button
@@ -16,7 +28,7 @@ const FormHelp = () => {
         className="mb-3"
         onClick={handleShow}
       >
-        <FaQuestionCircle /> Ayuda
+        <FaQuestionCircle /> {t("ui.help")}
       </Button>
 
       <Modal show={show} onHide={handleClose} dialogClassName="helpModal">
@@ -28,9 +40,8 @@ const FormHelp = () => {
             La correspondencia entre las variables del formulario y las líneas
             generadas es la siguiente:
           </p>
-
           <img
-            src={helpImage}
+            src={helpImage[i18n.resolvedLanguage]}
             alt="Descripción visual de las variables y su implicación en las guías"
             style={{ width: "100%", height: "auto" }}
             className="mb-3"
