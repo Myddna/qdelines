@@ -1,10 +1,25 @@
 {
   "ui": {
+    "metatag": {
+      "title": "CaliLíneas - Calligraphy guidelines generator"
+    },
     "language": "Language",
     "tagline": "Calligraphy guidelines generator",
     "print": "Print",
     "reset": "Reset",
     "help": "Help",
+    "helpModal": {
+      "title": "Help",
+      "imgAlt": "Visual description of the form variables and their implications on the guidelines",
+      "0": "The correspondence between the form and the lines generated is the following:",
+      "1": "All measures are expressed in <strong>milimeters</strong>",
+      "2": "Slant is expressed in <strong>degrees</strong>",
+      "3": "The baseline has a zero on the distance because it is the reference",
+      "4": "You can <strong>save your guides as PDF</strong> selecting your system's PDF printer on the print dialogue window"
+    },
+    "warning": {
+      "instagram": "Printing may not work if you came from Instagram. If you have issues, please open this page in your native browser using the three dots menu."
+    },
     "cform": {
       "structure": "General structure",
       "papersize": "Paper size",

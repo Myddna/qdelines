@@ -1,10 +1,25 @@
 {
   "ui": {
+    "metatag": {
+      "title": "CaliLíneas - Generador de guías para caligrafía"
+    },
     "language": "Idioma",
     "tagline": "Generador de guías caligráficas",
     "print": "Imprimir",
     "reset": "Reiniciar",
     "help": "Ayuda",
+    "helpModal": {
+      "title": "Ayuda",
+      "imgAlt": "Descripción visual de las variables y su implicación en las guías",
+      "0": "La correspondencia entre las variables del formulario y las líneas generadas es la siguiente:",
+      "1": "Las medidas están en <strong>milímetros</strong>",
+      "2": "La Inclinación está expresada en <strong>grados</strong>",
+      "3": "La línea base tiene distancia 0 porque es la línea de referencia inicial",
+      "4": "Puedes <strong>guardar tus guías en PDF</strong> si en el cuadro de diálogo de \"Imprimir\" seleccionas la impresora PDF de tu sistema."
+    },
+    "warning": {
+      "instagram": "Puede que la impresión no funcione desde Instagram. Si tienes problemas, abre esta página en tu navegador nativo desde el menú de puntos."
+    },
     "cform": {
       "structure": "Estructura general",
       "papersize": "Tamaño del papel",
