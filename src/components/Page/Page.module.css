@@ -4,3 +4,10 @@
   margin: 1rem auto;
   box-shadow: 0px 5px 13px -4px rgba(0, 0, 0, 0.46);
 }
+@media print {
+  .Page {
+    height: initial;
+    margin: 0;
+    box-shadow: none;
+  }
+}

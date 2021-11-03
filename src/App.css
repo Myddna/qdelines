@@ -21,3 +21,22 @@
 .highlighted-block p:last-child {
   margin-bottom: 0;
 }
+
+@media print {
+  .main-nav,
+  .main-footer,
+  .intro-hero,
+  .form-container {
+    display: none;
+  }
+  .page-container {
+    padding: 0 !important;
+    width: 100%;
+  }
+  .page-container .actions {
+    display: none;
+  }
+  .printable-page-wrapper {
+    padding: 0 !important;
+  }
+}

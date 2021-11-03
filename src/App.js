@@ -2,8 +2,7 @@ import "./App.css";
 import Container from "react-bootstrap/Container";
 import ControlForm from "./components/ControlForm/ControlForm";
 import Page from "./components/Page/Page";
-import React, { useState, useRef } from "react";
-import ReactToPrint from "react-to-print";
+import React, { useState } from "react";
 import { Button, Row, Col } from "react-bootstrap";
 import { FaPrint } from "react-icons/fa";
 import { PageDefaultProps } from "./components/Page/PageDefinitions";
@@ -14,19 +13,7 @@ import { useTranslation } from "react-i18next";
 const initialPageConfig = deepClone(PageDefaultProps);
 
 function App() {
-  // Using react-to-print:
-  const componentRef = useRef();
   const { t } = useTranslation();
-
-  const handleOnBeforeGetContent = () => {
-    setPrinting(true);
-    return Promise.resolve();
-  };
-
-  const handleOnBeforePrint = () => {
-    setPrinting(false);
-    return Promise.resolve();
-  };
 
   // Config handling
   const handleResetConfig = () => {
@@ -43,11 +30,8 @@ function App() {
       value = parseFloat(value);
     }
 
-    //console.log(`${name} => ${value}`);
-
     setPageConfig((previousState) => {
       const newState = { ...previousState };
-
       const nameParts = name.split("_");
 
       switch (nameParts.length) {
@@ -100,8 +84,11 @@ function App() {
     });
   };
 
+  const printPage = () => {
+    window.print();
+  };
+
   // States
-  const [printing, setPrinting] = useState(false);
   const [pageConfig, setPageConfig] = useState(initialPageConfig);
 
   return (
@@ -109,7 +96,7 @@ function App() {
       <IntroHero />
       <Container fluid>
         <Row>
-          <Col md="6" xl="4">
+          <Col md="6" xl="4" className="form-container">
             <ControlForm
               config={pageConfig}
               resetConfig={handleResetConfig}
@@ -117,29 +104,16 @@ function App() {
               toggleOptional={handleToggleOptional}
             />
           </Col>
-          <Col md="6" xl="8">
-            <div className="text-center py-3 sticky-md-top">
-              <ReactToPrint
-                trigger={() => (
-                  <Button size="sm">
-                    <FaPrint />
-                    {t("ui.print")}
-                  </Button>
-                )}
-                content={() => componentRef.current}
-                bodyClass="linesPrinting"
-                documentTitle="CaliLíneas"
-                onBeforeGetContent={handleOnBeforeGetContent}
-                onBeforePrint={handleOnBeforePrint}
-                removeAfterPrint="true"
-                pageStyle="@page { margin: 0mm; } @media print { body { -webkit-print-color-adjust: exact; } }"
-              />
+          <Col md="6" xl="8" className="page-container">
+            <div className="text-center py-3 sticky-md-top printable-page-wrapper">
+              <div className="actions">
+                <Button size="sm" onClick={printPage}>
+                  <FaPrint />
+                  {t("ui.print")}
+                </Button>
+              </div>
 
-              <Page
-                config={pageConfig}
-                printing={printing}
-                ref={componentRef}
-              />
+              <Page config={pageConfig} />
             </div>
           </Col>
         </Row>
