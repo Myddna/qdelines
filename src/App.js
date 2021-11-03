@@ -2,10 +2,9 @@ import "./App.css";
 import Container from "react-bootstrap/Container";
 import ControlForm from "./components/ControlForm/ControlForm";
 import Page from "./components/Page/Page";
-import React, { useState, useRef } from "react";
-import ReactToPrint from "react-to-print";
-import { Button, Row, Col } from "react-bootstrap";
-import { FaPrint } from "react-icons/fa";
+import React, { useState } from "react";
+import { Button, Row, Col, Alert } from "react-bootstrap";
+import { FaPrint, FaQuestionCircle } from "react-icons/fa";
 import { PageDefaultProps } from "./components/Page/PageDefinitions";
 import IntroHero from "./components/IntroHero/IntroHero";
 import { deepClone } from "./util/util";
@@ -13,17 +12,6 @@ import { deepClone } from "./util/util";
 const initialPageConfig = deepClone(PageDefaultProps);
 
 function App() {
-  // Using react-to-print:
-  const componentRef = useRef();
-  const handleOnBeforeGetContent = () => {
-    setPrinting(true);
-    return Promise.resolve();
-  };
-  const handleOnBeforePrint = () => {
-    setPrinting(false);
-    return Promise.resolve();
-  };
-
   // Config handling
   const handleResetConfig = () => {
     setPageConfig(deepClone(PageDefaultProps));
@@ -39,11 +27,8 @@ function App() {
       value = parseFloat(value);
     }
 
-    //console.log(`${name} => ${value}`);
-
     setPageConfig((previousState) => {
       const newState = { ...previousState };
-
       const nameParts = name.split("_");
 
       switch (nameParts.length) {
@@ -96,8 +81,11 @@ function App() {
     });
   };
 
+  const printPage = () => {
+    window.print();
+  };
+
   // States
-  const [printing, setPrinting] = useState(false);
   const [pageConfig, setPageConfig] = useState(initialPageConfig);
 
   return (
@@ -105,7 +93,11 @@ function App() {
       <IntroHero />
       <Container fluid>
         <Row>
-          <Col md="6" xl="4">
+          <Col md="6" xl="4" className="form-container">
+            <Alert variant="secondary" className="mt-3 text-center">
+              <FaQuestionCircle /> La opción de <strong>imprimir</strong> puede
+              que no refleje las medidas exactas si se lanza desde un móvil.
+            </Alert>
             <ControlForm
               config={pageConfig}
               resetConfig={handleResetConfig}
@@ -113,29 +105,16 @@ function App() {
               toggleOptional={handleToggleOptional}
             />
           </Col>
-          <Col md="6" xl="8">
-            <div className="text-center py-3 sticky-md-top">
-              <ReactToPrint
-                trigger={() => (
-                  <Button size="sm">
-                    <FaPrint />
-                    Imprimir
-                  </Button>
-                )}
-                content={() => componentRef.current}
-                bodyClass="linesPrinting"
-                documentTitle="CaliLíneas"
-                onBeforeGetContent={handleOnBeforeGetContent}
-                onBeforePrint={handleOnBeforePrint}
-                removeAfterPrint="true"
-                pageStyle="@page { margin: 0mm; } @media print { body { -webkit-print-color-adjust: exact; } }"
-              />
+          <Col md="6" xl="8" className="page-container">
+            <div className="text-center py-3 sticky-md-top printable-page-wrapper">
+              <div className="actions">
+                <Button size="sm" onClick={printPage}>
+                  <FaPrint />
+                  Imprimir
+                </Button>
+              </div>
 
-              <Page
-                config={pageConfig}
-                printing={printing}
-                ref={componentRef}
-              />
+              <Page config={pageConfig} />
             </div>
           </Col>
         </Row>

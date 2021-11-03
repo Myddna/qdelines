@@ -30,17 +30,11 @@ const Page = forwardRef((props, ref) => {
 
   const lineSetHeight = calculateLineSetHeight(props.config.lineSetStructure);
 
-  let style = {};
-  if (props.printing) {
-    /**
-     * react-to-print creates blank page if the component measures
-     * are exactly the same than the page substracting 1mm at te bottom.
-     */
-    style = {
-      width: `${pageMeasures.width}mm`,
-      height: `${pageMeasures.height - 1}mm`,
-    };
-  }
+  /** Page adjustment to prevent white page at the end */
+  const style = {
+    width: `${pageMeasures.width}mm`,
+    height: `${pageMeasures.height - 0.1}mm`,
+  };
 
   // Computing final SVG Height
   const fullSvgHeight =
@@ -56,45 +50,57 @@ const Page = forwardRef((props, ref) => {
     return <svg></svg>;
   }
 
+  // ToDo: Replicar este componente en otro que sea PagePDF https://react-pdf.org/svg
+  // Recalcular teniendo en cuenta que hay que convertir las medidas (TODAS) a 72 DPI -> de mm a inches * 72
   return (
-    <svg
-      ref={ref}
-      className={`${styles.Page} thePage`}
-      viewBox={`0 0 ${pageMeasures.width} ${pageMeasures.height}`}
-      xmlns="http://www.w3.org/2000/svg"
-      style={style}
-    >
-      <style>{`@page {size: ${props.config.sizeName} ${props.config.orientation}; } .signature { font: italic 2.5px sans-serif; }`}</style>
-      {[...Array(groupRepetitions)].map((elem, i) => {
-        let startIn = {
-          x: 10,
-          y:
-            lineSetHeight * i +
-            props.config.lineSetStructure.separation * i +
-            initialYOffset,
-        };
-        //        console.log(lineSetHeight, startIn.y);
-        return (
-          <LineSet
-            key={i}
-            lineSetStructure={props.config.lineSetStructure}
-            lineSetStyle={props.config.lineSetStyle}
-            startIn={startIn}
-            width={pageContentMeasures.width}
-          />
-        );
-      })}
-      <text
-        y={initialYOffset + fullSvgHeight + 3.5}
-        x="10"
-        className="signature"
+    <div id="guidelinesPage" className="printable">
+      <style>{`
+      @page {size: ${props.config.sizeName} ${props.config.orientation}; margin: 0; padding: 0; } 
+      .signature { font: italic 2.5px sans-serif; fill: grey; }
+      @media print {
+        .thePage {
+          width: ${style.width};
+          height: ${style.height};
+        }
+      }
+      `}</style>
+      <svg
+        ref={ref}
+        className={`${styles.Page} thePage`}
+        viewBox={`0 0 ${pageMeasures.width} ${pageMeasures.height}`}
+        xmlns="http://www.w3.org/2000/svg"
       >
-        Guías generadas con CaliLíneas -{" "}
-        <a href="https://calilineas.quedemoniosescribo.art">
-          https://calilineas.quedemoniosescribo.art
-        </a>
-      </text>
-    </svg>
+        {[...Array(groupRepetitions)].map((elem, i) => {
+          let startIn = {
+            x: 10,
+            y:
+              lineSetHeight * i +
+              props.config.lineSetStructure.separation * i +
+              initialYOffset,
+          };
+          //        console.log(lineSetHeight, startIn.y);
+          return (
+            <LineSet
+              key={i}
+              lineSetStructure={props.config.lineSetStructure}
+              lineSetStyle={props.config.lineSetStyle}
+              startIn={startIn}
+              width={pageContentMeasures.width}
+            />
+          );
+        })}
+        <text
+          y={initialYOffset + fullSvgHeight + 3.5}
+          x="10"
+          className="signature"
+        >
+          Guías generadas con CaliLíneas -{" "}
+          <a href="https://calilineas.quedemoniosescribo.art">
+            https://calilineas.quedemoniosescribo.art
+          </a>
+        </text>
+      </svg>
+    </div>
   );
 });
 

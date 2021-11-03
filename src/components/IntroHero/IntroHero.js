@@ -4,7 +4,7 @@ import styles from "./IntroHero.module.css";
 import { Link } from "react-router-dom";
 
 const IntroHero = () => (
-  <div className={styles.IntroHero}>
+  <div className={`${styles.IntroHero} intro-hero`}>
     <div className="px-4 py-4 my-5 text-center">
       <div className="text-center">
         <GiPencilRuler size="3em" className="mb-2 ms-2" />

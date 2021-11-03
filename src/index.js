@@ -13,7 +13,7 @@ ReactDOM.render(
   <React.StrictMode>
     <IconContext.Provider value={{ className: "react-icons me-2" }}>
       <Router>
-        <Header></Header>
+        <Header />
 
         <Route exact path="/" component={App} />
         <Route exact path="/la-autora" component={LaAutora} />
