@@ -94,10 +94,6 @@ function App() {
       <Container fluid>
         <Row>
           <Col md="6" xl="4" className="form-container">
-            <Alert variant="secondary" className="mt-3 text-center">
-              <FaQuestionCircle /> La opción de <strong>imprimir</strong> puede
-              que no refleje las medidas exactas si se lanza desde un móvil.
-            </Alert>
             <ControlForm
               config={pageConfig}
               resetConfig={handleResetConfig}
