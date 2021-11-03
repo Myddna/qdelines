@@ -120,8 +120,9 @@ function App() {
                   id="printText"
                   className="d-none my-3"
                 >
-                  Puede que la impresión no funcione desde Instagram. Abre la
-                  esta página en tu navegador nativo desde el menú de puntos.
+                  Puede que la impresión no funcione desde Instagram. Si tienes
+                  problemas, abre esta página en tu navegador nativo desde el
+                  menú de puntos.
                 </Alert>
               </div>
 
