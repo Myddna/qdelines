@@ -2,8 +2,8 @@ import "./App.css";
 import Container from "react-bootstrap/Container";
 import ControlForm from "./components/ControlForm/ControlForm";
 import Page from "./components/Page/Page";
-import React, { useState } from "react";
-import { Button, Row, Col } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Button, Row, Col, Alert } from "react-bootstrap";
 import { FaPrint } from "react-icons/fa";
 import { PageDefaultProps } from "./components/Page/PageDefinitions";
 import IntroHero from "./components/IntroHero/IntroHero";
@@ -87,6 +87,14 @@ function App() {
 
   // States
   const [pageConfig, setPageConfig] = useState(initialPageConfig);
+  useEffect(() => {
+    if (window.navigator.userAgent.indexOf("Instagram") >= 0) {
+      document.getElementById("printText").classList.remove("d-none");
+    } else {
+      document.getElementById("printText").classList.add("d-none");
+    }
+    return () => {};
+  });
 
   return (
     <div className="App">
@@ -105,9 +113,16 @@ function App() {
             <div className="text-center py-3 sticky-md-top printable-page-wrapper">
               <div className="actions">
                 <Button size="sm" onClick={printPage}>
-                  <FaPrint />
-                  Imprimir
+                  <FaPrint /> Imprimir
                 </Button>
+                <Alert
+                  variant="secondary"
+                  id="printText"
+                  className="d-none my-3"
+                >
+                  Puede que la impresión no funcione desde Instagram. Abre la
+                  esta página en tu navegador nativo desde el menú de puntos.
+                </Alert>
               </div>
 
               <Page config={pageConfig} />
