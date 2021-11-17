@@ -5,6 +5,11 @@ const LineSet = (props) => {
   let style = props.lineSetStyle;
   let coordinates = props.startIn;
   let totalWidth = props.width;
+
+  const getStrokeDasharray = (lineWidth) => {
+    return `${Math.max(1.2, lineWidth * 3)} ${Math.max(0.8, lineWidth * 2)}`;
+  };
+
   // For Obliques
   let startOblique = {
     x: coordinates.x,
@@ -36,9 +41,7 @@ const LineSet = (props) => {
           y2={coordinates.y + (structure.ascender - structure.auxAscender)}
           stroke={style.auxAscender.color}
           strokeWidth={style.auxAscender.width}
-          strokeDasharray={`${style.auxAscender.width * 2} ${
-            style.auxAscender.width
-          }`}
+          strokeDasharray={getStrokeDasharray(style.auxAscender.width)}
         />
       )}
       {/** Median */}
@@ -108,9 +111,7 @@ const LineSet = (props) => {
           }
           stroke={style.auxDescender.color}
           strokeWidth={style.auxDescender.width}
-          strokeDasharray={`${style.auxDescender.width * 2} ${
-            style.auxDescender.width
-          }`}
+          strokeDasharray={getStrokeDasharray(style.auxDescender.width)}
         />
       )}
       {/** Oblique */}
@@ -142,7 +143,7 @@ const LineSet = (props) => {
           }
           stroke={style.aux1.color}
           strokeWidth={style.aux1.width}
-          strokeDasharray={`${style.aux1.width * 2} ${style.aux1.width}`}
+          strokeDasharray={getStrokeDasharray(style.aux1.width)}
         />
       )}
       {structure.aux2 && (
@@ -163,7 +164,7 @@ const LineSet = (props) => {
           }
           stroke={style.aux2.color}
           strokeWidth={style.aux2.width}
-          strokeDasharray={`${style.aux2.width * 2} ${style.aux2.width}`}
+          strokeDasharray={getStrokeDasharray(style.aux2.width)}
         />
       )}
     </g>
