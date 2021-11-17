@@ -4,7 +4,8 @@ Generador de guías para caligrafía configurable.
 
 Hecho en React.
 
-[Ir a CaliLíneas.](https://calilineas.quedemoniosescribo.art/)
+https://calilineas.quedemoniosescribo.art
+https://martam.dev
 
 ## Status
 
