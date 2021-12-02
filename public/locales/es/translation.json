@@ -1,0 +1,83 @@
+{
+  "ui": {
+    "metatag": {
+      "title": "CaliLíneas - Generador de guías para caligrafía"
+    },
+    "language": "Idioma",
+    "tagline": "Generador de guías caligráficas",
+    "print": "Imprimir",
+    "reset": "Reiniciar",
+    "help": "Ayuda",
+    "helpModal": {
+      "title": "Ayuda",
+      "imgAlt": "Descripción visual de las variables y su implicación en las guías",
+      "0": "La correspondencia entre las variables del formulario y las líneas generadas es la siguiente:",
+      "1": "Las medidas están en <strong>milímetros</strong>",
+      "2": "La Inclinación está expresada en <strong>grados</strong>",
+      "3": "La línea base tiene distancia 0 porque es la línea de referencia inicial",
+      "4": "Puedes <strong>guardar tus guías en PDF</strong> si en el cuadro de diálogo de \"Imprimir\" seleccionas la impresora PDF de tu sistema."
+    },
+    "warning": {
+      "instagram": "Puede que la impresión no funcione desde Instagram. Si tienes problemas, abre esta página en tu navegador nativo desde el menú de puntos."
+    },
+    "cform": {
+      "structure": "Estructura general",
+      "papersize": "Tamaño del papel",
+      "orientation": "Orientación",
+      "landscape": "Horizontal",
+      "portrait": "Vertical",
+      "linespacing": "Interlineado",
+      "baseline": "Línea base",
+      "distancereference": "Distancia (Referencia)",
+      "distance": "Distancia",
+      "color": "Color",
+      "linewidth": "Grosor",
+      "middleline": "Línea media",
+      "ascenders": "Ascendentes",
+      "descenders": "Descendentes",
+      "oblique": "Oblícuas",
+      "separation": "Separación",
+      "slant": "Inclinación",
+      "showoptional": "Mostrar opcionales",
+      "hideoptional": "Ocultar opcionales",
+      "auxascenders": "Auxiliar de ascendentes",
+      "auxdescenders": "Auxiliar de descendentes",
+      "auxcentral1": "Auxiliar central 1",
+      "auxcentral2": "Auxiliar central 2",
+      "help": {
+        "measures": "Las medidas están en milímetros",
+        "deactivate": "Para desactivar una línea concreta, pon su grosor a 0"
+      }
+    }
+  },
+  "svg": {
+    "credit": "Guías generadas con CaliLíneas"
+  },
+  "page": {
+    "knowmore": {
+      "title": "Saber más",
+      "pageTitle": "¿Qué es esta web app?",
+      "pageSubtitle": "Calilíneas, generador de guías para caligrafía",
+      "1": "<0>CaliLíneas</0> es una aplicación <2>React</2> para crear guías o pautas caligráficas.",
+      "2": "CaliLíneas permite genera guías para utilizar directamente o bajo otro papel, y se pueden ajustar los valores para adaptarse a distintos tipos de escritura.",
+      "example": {
+        "1": "<strong>Ejemplo:</strong>",
+        "2": "Si necesitas una guía para letra Carolina, con un ancho de plumilla de 2mm y un ratio 3-4-3, como la aplicación toma milímetros, puedes configurarla con las siguientes distancias:",
+        "3": "Línea media: 2 * 4 = <1>8</1> <3>(2 es el ancho de la plumilla y 4 el ratio elegido)</3>",
+        "4": "Ascendentes y descendentes: 2 * 3 = <strong>6</strong>",
+        "5": "El resto de valores, como nos convenga en cada caso."
+      },
+      "3": "El resto de valores, como nos convenga en cada caso.",
+      "4": "¿Se pueden crear guías para lettering?",
+      "5": "Sí! Lo que de momento no puedo generar son <em>layouts</em> pero, si te manejas con un programa de dibujo vectorial como Inkscape, Affinity Designer o Adobe Illustrator puedes abrir el PDF de las guías y montar el <em>layout</em> de tu composición con las guías generadas con CaliLíneas como piezas.",
+      "6": "Quiero aprender caligrafía o lettering. ¿Cómo lo hago?",
+      "7": "En internet tienes multitud de cursillos, vídeos y libros que puedes adquirir, aunque no hay nada como apuntarte a un taller del estilo que te interese en vivo y en directo.",
+      "8": "¡Seguro que te cruzas con alguno en tu ciudad!",
+      "9": "Y ahora... ¿Qué demonios escribo?",
+      "10": "Encuentra <2>aquí</2> la respuesta."
+    },
+    "author": {
+      "title": "La autora"
+    }
+  }
+}

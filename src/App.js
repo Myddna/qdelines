@@ -8,10 +8,13 @@ import { FaPrint } from "react-icons/fa";
 import { PageDefaultProps } from "./components/Page/PageDefinitions";
 import IntroHero from "./components/IntroHero/IntroHero";
 import { deepClone } from "./util/util";
+import { useTranslation } from "react-i18next";
 
 const initialPageConfig = deepClone(PageDefaultProps);
 
 function App() {
+  const { t } = useTranslation();
+
   // Config handling
   const handleResetConfig = () => {
     setPageConfig(deepClone(PageDefaultProps));
@@ -113,16 +116,14 @@ function App() {
             <div className="text-center py-3 sticky-md-top printable-page-wrapper">
               <div className="actions">
                 <Button size="sm" onClick={printPage}>
-                  <FaPrint /> Imprimir
+                  <FaPrint /> {t("ui.print")}
                 </Button>
                 <Alert
                   variant="secondary"
                   id="printText"
                   className="d-none my-3"
                 >
-                  Puede que la impresión no funcione desde Instagram. Si tienes
-                  problemas, abre esta página en tu navegador nativo desde el
-                  menú de puntos.
+                  {t("ui.warning.instagram")}
                 </Alert>
               </div>
 

@@ -1,13 +1,25 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { FaQuestionCircle } from "react-icons/fa";
-import helpImage from "./../../../assets/helpGuideline_v3.svg";
+import { Trans, useTranslation } from "react-i18next";
+
+// Localized images
+import helpImage_es from "./../../../assets/helpGuideline_es.svg";
+import helpImage_en from "./../../../assets/helpGuideline_en.svg";
+
+const helpImage = {
+  es: helpImage_es,
+  en: helpImage_en,
+};
 
 const FormHelp = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <Button
@@ -16,40 +28,37 @@ const FormHelp = () => {
         className="mb-3"
         onClick={handleShow}
       >
-        <FaQuestionCircle /> Ayuda
+        <FaQuestionCircle /> {t("ui.help")}
       </Button>
 
       <Modal show={show} onHide={handleClose} dialogClassName="helpModal">
         <Modal.Header closeButton className="h5">
-          Ayuda
+          {t("ui.helpModal.title")}
         </Modal.Header>
         <Modal.Body>
-          <p>
-            La correspondencia entre las variables del formulario y las líneas
-            generadas es la siguiente:
-          </p>
-
+          <p>{t("ui.helpModal.0")}</p>
           <img
-            src={helpImage}
-            alt="Descripción visual de las variables y su implicación en las guías"
+            src={helpImage[i18n.resolvedLanguage]}
+            alt={t("ui.helpModal.imgAlt")}
             style={{ width: "100%", height: "auto" }}
             className="mb-3"
           />
+          {/**
+           * Here I'm using Trans component because the content has basic html tags
+           * and the "t" function is unable to render them.
+           */}
           <ul>
             <li>
-              Las medidas están en <strong>milímetros</strong>.
+              <Trans i18nKey="ui.helpModal.1" />
             </li>
             <li>
-              La Inclinación está expresada en <strong>grados</strong>.
+              <Trans i18nKey="ui.helpModal.2" />
             </li>
             <li>
-              La línea base tiene distancia 0 porque es la línea de referencia
-              inicial
+              <Trans i18nKey="ui.helpModal.3" />
             </li>
             <li>
-              Puedes <strong>guardar tus guías en PDF</strong> si en el cuadro
-              de diálogo de "Imprimir" seleccionas la impresora PDF de tu
-              sistema.
+              <Trans i18nKey="ui.helpModal.4" />
             </li>
           </ul>
         </Modal.Body>

@@ -9,8 +9,11 @@ import {
   calculateLineSetHeight,
 } from "./PageDefinitions";
 import LineSet from "./LineSet/LineSet";
+import { useTranslation } from "react-i18next";
 
 const Page = forwardRef((props, ref) => {
+  const { t } = useTranslation();
+
   const pageMeasures = getPageSize(
     props.config.sizeName,
     props.config.orientation
@@ -94,7 +97,7 @@ const Page = forwardRef((props, ref) => {
           x="10"
           className="signature"
         >
-          Guías generadas con CaliLíneas -{" "}
+          {t("svg.credit")} -{" "}
           <a href="https://calilineas.quedemoniosescribo.art">
             https://calilineas.quedemoniosescribo.art
           </a>
