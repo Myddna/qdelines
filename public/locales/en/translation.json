@@ -55,7 +55,26 @@
   },
   "page": {
     "knowmore": {
-      "title": "Know more"
+      "title": "Know more",
+      "pageTitle": "What is this web app?",
+      "pageSubtitle": "Calilíneas, calligraphy guidelines generator",
+      "1": "<0>CaliLíneas</0> is a <2>React</2> web app to create calligraphy guidelines.",
+      "2": "CaliLíneas allows guidelines generation to use under the writing paper or to use directly. The guidelines can be configured to fit different writing styles.",
+      "example": {
+        "1": "<strong>Example:</strong>",
+        "2": "If you need a guide for Foundational script, with a nib width of 2mm and a 3-4-3 ratio, since the app takes the measures in milimeters, you can configure the app with the following values:",
+        "3": "Middle line: 2 * 4 = <1>8</1> <3>(2 is the nib width and 4 the chosen ratio)</3>",
+        "4": "Ascenders and descenders: 2 * 3 = <strong>6</strong>",
+        "5": "The rest of the values, as you see fit."
+      },
+      "3": "The lines can be deactivated setting their line width or distance to 0.",
+      "4": "Can I generate lettering guidelines?",
+      "5": "Yes! What I cannot generate for now is <em>composition layouts</em> but, if you know your way around vector based editing software such as Inkscape, Affinity Designer or Adobe Illustrator you can open the guidelines PDF and build your layout using Calilíneas generated guidelines as pieces.",
+      "6": "I want to learn calligraphy or lettering. How do I do it?",
+      "7": "There are lots of courses, videos and lessons on the Internet you can get, but there is nothing like signing up to a workshop about the style you want to learn.",
+      "8": "You will find one near you, for sure!",
+      "9": "So now... What should I write?",
+      "10": "Find your answer <2>here</2>."
     },
     "author": {
       "title": "The author"

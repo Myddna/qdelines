@@ -20,7 +20,11 @@ const Header = () => {
               <Nav.Link to="/saber-mas" as={Link}>
                 {t("page.knowmore.title")}
               </Nav.Link>
-              <Nav.Link to="/la-autora" as={Link}>
+              <Nav.Link
+                href="https://martam.dev/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 {t("page.author.title")}
               </Nav.Link>
               <LanguageSwitcher />

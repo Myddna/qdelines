@@ -27,6 +27,9 @@ i18n
         return value;
       },
     },
+    react: {
+      transKeepBasicHtmlNodesFor: ['strong', 'em', 'br']
+    },
   });
 
 export default i18n;

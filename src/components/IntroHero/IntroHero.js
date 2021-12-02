@@ -19,9 +19,14 @@ const IntroHero = () => {
             <Link to="/saber-mas" className="btn btn-primary gap-3 me-0">
               {t("page.knowmore.title")}
             </Link>
-            <Link to="/la-autora" className="btn btn-outline-secondary me-0">
+            <a
+              href="https://martam.dev/"
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-outline-secondary me-0"
+            >
               {t("page.author.title")}
-            </Link>
+            </a>
           </div>
         </div>
       </div>
