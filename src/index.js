@@ -6,7 +6,6 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { IconContext } from "react-icons";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import LaAutora from "./components/LaAutora/LaAutora";
 import SaberMas from "./components/SaberMas/SaberMas";
 import { Suspense } from "react";
 import { useTranslation } from "react-i18next";
@@ -27,7 +26,6 @@ const Index = () => {
       <Header />
       <Switch>
         <Route exact path="/" component={App} />
-        <Route exact path="/la-autora" component={LaAutora} />
         <Route exact path="/saber-mas" component={SaberMas} />
       </Switch>
       <Footer />
