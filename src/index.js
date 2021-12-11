@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
-import "./custom.scss";
-import App from "./App";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import { IconContext } from "react-icons";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SaberMas from "./components/SaberMas/SaberMas";
-import { Suspense } from "react";
-import { useTranslation } from "react-i18next";
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import './custom.scss';
+import App from './App';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import { IconContext } from 'react-icons';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import SaberMas from './components/SaberMas/SaberMas';
+import { Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // Localization
-import "./i18n";
+import './i18n';
 
 const Index = () => {
   const { t, i18n } = useTranslation();

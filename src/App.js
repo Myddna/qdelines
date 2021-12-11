@@ -1,18 +1,20 @@
-import "./App.css";
-import Container from "react-bootstrap/Container";
-import ControlForm from "./components/ControlForm/ControlForm";
-import Page from "./components/Page/Page";
-import React, { useState, useEffect } from "react";
-import { Button, Row, Col, Alert } from "react-bootstrap";
-import { FaPrint } from "react-icons/fa";
-import { PageDefaultProps } from "./components/Page/PageDefinitions";
-import IntroHero from "./components/IntroHero/IntroHero";
-import { deepClone } from "./util/util";
-import { useTranslation } from "react-i18next";
+import './App.css';
+import Container from 'react-bootstrap/Container';
+import React, { useState, useEffect } from 'react';
+import {
+  Button, Row, Col, Alert,
+} from 'react-bootstrap';
+import { FaPrint } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
+import ControlForm from './components/ControlForm/ControlForm';
+import Page from './components/Page/Page';
+import { PageDefaultProps } from './components/Page/PageDefinitions';
+import IntroHero from './components/IntroHero/IntroHero';
+import { deepClone } from './util/util';
 
 const initialPageConfig = deepClone(PageDefaultProps);
 
-function App() {
+const App = function () {
   const { t } = useTranslation();
 
   // Config handling
@@ -22,17 +24,17 @@ function App() {
 
   // Input change handling
   const handleInputChange = (evt) => {
-    const target = evt.target;
-    const name = target.name;
+    const { target } = evt;
+    const { name } = target;
 
-    let value = target.type === "checkbox" ? target.checked : target.value;
-    if (target.type === "number") {
+    let value = target.type === 'checkbox' ? target.checked : target.value;
+    if (target.type === 'number') {
       value = parseFloat(value);
     }
 
     setPageConfig((previousState) => {
       const newState = { ...previousState };
-      const nameParts = name.split("_");
+      const nameParts = name.split('_');
 
       switch (nameParts.length) {
         case 1:
@@ -59,12 +61,9 @@ function App() {
 
       if (show) {
         // Line position
-        newState.lineSetStructure.auxAscender =
-          newState.lineSetStructure.ascender - 1;
-        newState.lineSetStructure.auxDescender =
-          newState.lineSetStructure.descender - 1;
-        newState.lineSetStructure.aux1 =
-          newState.lineSetStructure.xHeight - 1.5;
+        newState.lineSetStructure.auxAscender = newState.lineSetStructure.ascender - 1;
+        newState.lineSetStructure.auxDescender = newState.lineSetStructure.descender - 1;
+        newState.lineSetStructure.aux1 = newState.lineSetStructure.xHeight - 1.5;
         newState.lineSetStructure.aux2 = 1.5;
 
         // Line style
@@ -91,10 +90,10 @@ function App() {
   // States
   const [pageConfig, setPageConfig] = useState(initialPageConfig);
   useEffect(() => {
-    if (window.navigator.userAgent.indexOf("Instagram") >= 0) {
-      document.getElementById("printText").classList.remove("d-none");
+    if (window.navigator.userAgent.indexOf('Instagram') >= 0) {
+      document.getElementById('printText').classList.remove('d-none');
     } else {
-      document.getElementById("printText").classList.add("d-none");
+      document.getElementById('printText').classList.add('d-none');
     }
     return () => {};
   });
@@ -116,14 +115,16 @@ function App() {
             <div className="text-center py-3 sticky-md-top printable-page-wrapper">
               <div className="actions">
                 <Button size="sm" onClick={printPage}>
-                  <FaPrint /> {t("ui.print")}
+                  <FaPrint />
+                  {' '}
+                  {t('ui.print')}
                 </Button>
                 <Alert
                   variant="secondary"
                   id="printText"
                   className="d-none my-3"
                 >
-                  {t("ui.warning.instagram")}
+                  {t('ui.warning.instagram')}
                 </Alert>
               </div>
 
@@ -134,6 +135,6 @@ function App() {
       </Container>
     </div>
   );
-}
+};
 
 export default App;
