@@ -3,6 +3,6 @@
  * @param {object} obj
  * @returns
  */
-export const deepClone = (obj) => {
-  return JSON.parse(JSON.stringify(obj));
-};
+const deepClone = (obj) => JSON.parse(JSON.stringify(obj));
+
+export default deepClone;

@@ -17,16 +17,19 @@ const FormSectionTitle = function ({
 };
 
 FormSectionTitle.propTypes = {
-  as: PropTypes.node,
+  as: PropTypes.string,
   title: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
   className: PropTypes.string,
 };
 
 FormSectionTitle.defaultProps = {
   as: 'div',
   title: '',
-  children: null,
+  children: '',
   className: '',
 };
 

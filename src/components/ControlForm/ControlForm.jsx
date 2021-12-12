@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './ControlForm.module.css';
 import FormSectionTitle from './FormSectionTitle/FormSectionTitle';
 import FormHelp from './FormHelp/FormHelp';
+import { PagePropTypes, PageDefaultProps } from '../Page/PageDefinitions';
 
 const ControlForm = function (props) {
   const { t } = useTranslation();
@@ -593,9 +594,11 @@ ControlForm.propTypes = {
   resetConfig: PropTypes.func.isRequired,
   inputChange: PropTypes.func.isRequired,
   toggleOptional: PropTypes.func.isRequired,
-  config: PropTypes.node.isRequired,
+  config: PropTypes.exact(PagePropTypes),
 };
 
-ControlForm.defaultProps = {};
+ControlForm.defaultProps = {
+  config: PageDefaultProps,
+};
 
 export default ControlForm;

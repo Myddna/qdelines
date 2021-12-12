@@ -10,12 +10,13 @@ import ControlForm from './components/ControlForm/ControlForm';
 import Page from './components/Page/Page';
 import { PageDefaultProps } from './components/Page/PageDefinitions';
 import IntroHero from './components/IntroHero/IntroHero';
-import { deepClone } from './util/util';
+import deepClone from './util/util';
 
 const initialPageConfig = deepClone(PageDefaultProps);
 
 const App = function () {
   const { t } = useTranslation();
+  const [pageConfig, setPageConfig] = useState(initialPageConfig);
 
   // Config handling
   const handleResetConfig = () => {
@@ -87,8 +88,6 @@ const App = function () {
     window.print();
   };
 
-  // States
-  const [pageConfig, setPageConfig] = useState(initialPageConfig);
   useEffect(() => {
     if (window.navigator.userAgent.indexOf('Instagram') >= 0) {
       document.getElementById('printText').classList.remove('d-none');
