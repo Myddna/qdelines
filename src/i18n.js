@@ -1,20 +1,20 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import Backend from "i18next-http-backend";
-import { DateTime } from "luxon";
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import Backend from 'i18next-http-backend';
+import { DateTime } from 'luxon';
 
 i18n
   .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next)
-  .on("languageChanged", (lng) => {
+  .on('languageChanged', (lng) => {
     // Update html attribute
-    document.documentElement.setAttribute("lang", lng);
+    document.documentElement.setAttribute('lang', lng);
   })
   .init({
-    debug: true,
-    fallbackLng: "es",
+    debug: false,
+    fallbackLng: 'es',
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
       // Date object formatting
@@ -28,7 +28,7 @@ i18n
       },
     },
     react: {
-      transKeepBasicHtmlNodesFor: ['strong', 'em', 'br']
+      transKeepBasicHtmlNodesFor: ['strong', 'em', 'br'],
     },
   });
 

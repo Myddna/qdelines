@@ -1,22 +1,23 @@
-import React, { forwardRef } from "react";
-import styles from "./Page.module.css";
-import "./Print.css";
+import React, { forwardRef } from 'react';
+import { PropTypes } from 'prop-types';
+import { useTranslation } from 'react-i18next';
+import LineSet from './LineSet/LineSet';
 import {
   getPageSize,
   calculateRepetitions,
   PageDefaultProps,
   PagePropTypes,
   calculateLineSetHeight,
-} from "./PageDefinitions";
-import LineSet from "./LineSet/LineSet";
-import { useTranslation } from "react-i18next";
+} from './PageDefinitions';
+import styles from './Page.module.css';
+import './Print.css';
 
 const Page = forwardRef((props, ref) => {
   const { t } = useTranslation();
 
   const pageMeasures = getPageSize(
     props.config.sizeName,
-    props.config.orientation
+    props.config.orientation,
   );
 
   // Adding fixed margin for now: 10mm
@@ -28,7 +29,7 @@ const Page = forwardRef((props, ref) => {
   // Calculating repetitions
   const groupRepetitions = calculateRepetitions(
     pageContentMeasures,
-    props.config.lineSetStructure
+    props.config.lineSetStructure,
   );
 
   const lineSetHeight = calculateLineSetHeight(props.config.lineSetStructure);
@@ -40,24 +41,21 @@ const Page = forwardRef((props, ref) => {
   };
 
   // Computing final SVG Height
-  const fullSvgHeight =
-    lineSetHeight * groupRepetitions +
-    props.config.lineSetStructure.separation * (groupRepetitions - 1);
+  const fullSvgHeight = lineSetHeight * groupRepetitions
+    + props.config.lineSetStructure.separation * (groupRepetitions - 1);
 
   // Initial offset calculation for vertically center the guidelines
   // 10 default margin, -2 adjustment for page signature
-  const initialYOffset =
-    (pageContentMeasures.height - fullSvgHeight) / 2 + 10 - 2;
+  const initialYOffset = (pageContentMeasures.height - fullSvgHeight) / 2 + 10 - 2;
 
   if (groupRepetitions <= 0) {
-    return <svg></svg>;
+    return <svg />;
   }
 
-  // ToDo: Replicar este componente en otro que sea PagePDF https://react-pdf.org/svg
-  // Recalcular teniendo en cuenta que hay que convertir las medidas (TODAS) a 72 DPI -> de mm a inches * 72
   return (
     <div id="guidelinesPage" className="printable">
-      <style>{`
+      <style>
+        {`
       @page {size: ${props.config.sizeName} ${props.config.orientation}; margin: 0; padding: 0; } 
       .signature { font: italic 2.5px sans-serif; fill: grey; }
       @media print {
@@ -66,7 +64,9 @@ const Page = forwardRef((props, ref) => {
           height: ${style.height};
         }
       }
-      `}</style>
+      `}
+
+      </style>
       <svg
         ref={ref}
         className={`${styles.Page} thePage`}
@@ -74,17 +74,17 @@ const Page = forwardRef((props, ref) => {
         xmlns="http://www.w3.org/2000/svg"
       >
         {[...Array(groupRepetitions)].map((elem, i) => {
-          let startIn = {
+          const startIn = {
             x: 10,
             y:
-              lineSetHeight * i +
-              props.config.lineSetStructure.separation * i +
-              initialYOffset,
+              lineSetHeight * i
+              + props.config.lineSetStructure.separation * i
+              + initialYOffset,
           };
-          //        console.log(lineSetHeight, startIn.y);
+          const key = `lineSet${i}`;
           return (
             <LineSet
-              key={i}
+              key={key}
               lineSetStructure={props.config.lineSetStructure}
               lineSetStyle={props.config.lineSetStyle}
               startIn={startIn}
@@ -97,7 +97,10 @@ const Page = forwardRef((props, ref) => {
           x="10"
           className="signature"
         >
-          {t("svg.credit")} -{" "}
+          {t('svg.credit')}
+          {' '}
+          -
+          {' '}
           <a href="https://calilineas.quedemoniosescribo.art">
             https://calilineas.quedemoniosescribo.art
           </a>
@@ -107,14 +110,12 @@ const Page = forwardRef((props, ref) => {
   );
 });
 
-/**
- * Visit https://reactjs.org/docs/typechecking-with-proptypes.html for details on Typechecking with PropTypes
- */
-Page.propTypes = PagePropTypes;
+Page.propTypes = {
+  config: PropTypes.exact(PagePropTypes),
+};
 
-/**
- * Definition of the default page: all settings active
- */
-Page.defaultProps = PageDefaultProps;
+Page.defaultProps = {
+  config: PageDefaultProps,
+};
 
 export default Page;
