@@ -7,11 +7,10 @@ import {
   FaLinkedin,
   FaTwitter,
 } from 'react-icons/fa';
-import styles from './LaAutora.module.css';
 
 const LaAutora = function () {
   return (
-    <div className={styles.LaAutora}>
+    <div>
       <Container className="my-3">
         <h1 className="mb-4">Hola, soy Marta 🙋‍♀️</h1>
         <p>

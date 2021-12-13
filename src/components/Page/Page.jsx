@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { PropTypes } from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import LineSet from './LineSet/LineSet';
@@ -10,14 +10,13 @@ import {
   calculateLineSetHeight,
 } from './PageDefinitions';
 import styles from './Page.module.css';
-import './Print.css';
 
-const Page = forwardRef((props, ref) => {
+const Page = function ({ config }) {
   const { t } = useTranslation();
 
   const pageMeasures = getPageSize(
-    props.config.sizeName,
-    props.config.orientation,
+    config.sizeName,
+    config.orientation,
   );
 
   // Adding fixed margin for now: 10mm
@@ -29,10 +28,10 @@ const Page = forwardRef((props, ref) => {
   // Calculating repetitions
   const groupRepetitions = calculateRepetitions(
     pageContentMeasures,
-    props.config.lineSetStructure,
+    config.lineSetStructure,
   );
 
-  const lineSetHeight = calculateLineSetHeight(props.config.lineSetStructure);
+  const lineSetHeight = calculateLineSetHeight(config.lineSetStructure);
 
   /** Page adjustment to prevent white page at the end */
   const style = {
@@ -42,7 +41,7 @@ const Page = forwardRef((props, ref) => {
 
   // Computing final SVG Height
   const fullSvgHeight = lineSetHeight * groupRepetitions
-    + props.config.lineSetStructure.separation * (groupRepetitions - 1);
+    + config.lineSetStructure.separation * (groupRepetitions - 1);
 
   // Initial offset calculation for vertically center the guidelines
   // 10 default margin, -2 adjustment for page signature
@@ -56,7 +55,7 @@ const Page = forwardRef((props, ref) => {
     <div id="guidelinesPage" className="printable">
       <style>
         {`
-      @page {size: ${props.config.sizeName} ${props.config.orientation}; margin: 0; padding: 0; } 
+      @page {size: ${config.sizeName} ${config.orientation}; margin: 0; padding: 0; } 
       .signature { font: italic 2.5px sans-serif; fill: grey; }
       @media print {
         .thePage {
@@ -68,7 +67,6 @@ const Page = forwardRef((props, ref) => {
 
       </style>
       <svg
-        ref={ref}
         className={`${styles.Page} thePage`}
         viewBox={`0 0 ${pageMeasures.width} ${pageMeasures.height}`}
         xmlns="http://www.w3.org/2000/svg"
@@ -78,15 +76,15 @@ const Page = forwardRef((props, ref) => {
             x: 10,
             y:
               lineSetHeight * i
-              + props.config.lineSetStructure.separation * i
+              + config.lineSetStructure.separation * i
               + initialYOffset,
           };
           const key = `lineSet${i}`;
           return (
             <LineSet
               key={key}
-              lineSetStructure={props.config.lineSetStructure}
-              lineSetStyle={props.config.lineSetStyle}
+              lineSetStructure={config.lineSetStructure}
+              lineSetStyle={config.lineSetStyle}
               startIn={startIn}
               width={pageContentMeasures.width}
             />
@@ -108,7 +106,7 @@ const Page = forwardRef((props, ref) => {
       </svg>
     </div>
   );
-});
+};
 
 Page.propTypes = {
   config: PropTypes.exact(PagePropTypes),

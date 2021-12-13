@@ -1,12 +1,11 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { Trans, useTranslation } from 'react-i18next';
-import styles from './SaberMas.module.css';
 
 const SaberMas = function () {
   const { t } = useTranslation();
   return (
-    <div className={styles.SaberMas}>
+    <div>
       <Container className="my-3">
         <h1 className="mb-4">{t('page.knowmore.pageTitle')}</h1>
         <h2>{t('page.knowmore.pageSubtitle')}</h2>

@@ -1,10 +1,9 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import styles from './PoliticaDePrivacidad.module.css';
 
 const PoliticaDePrivacidad = function () {
   return (
-    <div className={styles.PoliticaDePrivacidad}>
+    <div>
       <Container className="my-3">
         <h1 className="mb-4">Política de privacidad</h1>
         <div className="politica-content">

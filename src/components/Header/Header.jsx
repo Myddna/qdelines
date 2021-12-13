@@ -2,13 +2,12 @@ import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import styles from './Header.module.css';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 
 const Header = function () {
   const { t } = useTranslation();
   return (
-    <Navbar className={`${styles.Header} main-nav`} bg="light" expand="lg">
+    <Navbar className="main-nav" bg="light" expand="lg">
       <Container fluid>
         <Navbar.Brand as={Link} to="/">
           CaliLíneas

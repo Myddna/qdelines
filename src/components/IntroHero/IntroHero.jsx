@@ -2,12 +2,11 @@ import React from 'react';
 import { GiPencilRuler } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import styles from './IntroHero.module.css';
 
 const IntroHero = function () {
   const { t } = useTranslation();
   return (
-    <div className={`${styles.IntroHero} intro-hero`}>
+    <div className="intro-hero">
       <div className="px-4 py-4 my-5 text-center">
         <div className="text-center">
           <GiPencilRuler size="3em" className="mb-2 ms-2" />

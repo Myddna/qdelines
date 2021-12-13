@@ -1,3 +1,4 @@
+/** App Global Styles */
 .b-divider {
   height: 2rem;
   background-color: rgba(0, 0, 0, 0.1);
@@ -22,6 +23,12 @@
   margin-bottom: 0;
 }
 
+/** 
+ * Special styles for printing
+ * The page container stretches to occupy all page space. 
+ * Unnecessary elements disappear (navigation, hero, footer, form, buttons...)
+ * See Page.module.css also (styles of styled component Page)
+ */
 @media print {
   .main-nav,
   .main-footer,
