@@ -59,11 +59,11 @@
       "pageTitle": "What is this web app?",
       "pageSubtitle": "Calilíneas, calligraphy guidelines generator",
       "1": "<0>CaliLíneas</0> is a <2>React</2> web app to create calligraphy guidelines.",
-      "2": "CaliLíneas allows guidelines generation to use under the writing paper or to use directly. The guidelines can be configured to fit different writing styles.",
+      "2": "CaliLíneas allows you to generate calligraphy guidelines to write over directly or to use under writing paper. The guidelines can be configured to fit different writing styles.",
       "example": {
         "1": "<strong>Example:</strong>",
         "2": "If you need a guide for Foundational script, with a nib width of 2mm and a 3-4-3 ratio, since the app takes the measures in milimeters, you can configure the app with the following values:",
-        "3": "Middle line: 2 * 4 = <1>8</1> <3>(2 is the nib width and 4 the chosen ratio)</3>",
+        "3": "Middle line: 2 * 4 = <2>8</2> <4>(2 is the nib width and 4 the chosen ratio)</4>",
         "4": "Ascenders and descenders: 2 * 3 = <strong>6</strong>",
         "5": "The rest of the values, as you see fit."
       },
