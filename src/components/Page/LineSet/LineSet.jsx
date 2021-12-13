@@ -64,6 +64,16 @@ const LineSet = function (props) {
   };
   return (
     <g>
+      {/** Oblique */}
+      {lineSetStructure.obliqueSeparation > 0
+      && drawObliques(
+        startIn.y,
+        startOblique,
+        lineSetStructure.obliqueSlant,
+        lineSetStructure.obliqueSeparation,
+        width,
+        lineSetStyle.oblique,
+      )}
       {/** Ascender */}
       {lineSetStructure.ascender && (
         <line
@@ -157,16 +167,6 @@ const LineSet = function (props) {
           strokeDasharray={getStrokeDasharray(lineSetStyle.auxDescender.width)}
         />
       )}
-      {/** Oblique */}
-      {lineSetStructure.obliqueSeparation > 0
-        && drawObliques(
-          startIn.y,
-          startOblique,
-          lineSetStructure.obliqueSlant,
-          lineSetStructure.obliqueSeparation,
-          width,
-          lineSetStyle.oblique,
-        )}
       {/** Aux lines */}
       {lineSetStructure.aux1 && (
         <line
