@@ -117,6 +117,8 @@ const App = function () {
   return (
     <div className="App">
       <IntroHero />
+      {window.navigator.userAgent}
+      {`show instagram warning: ${showInstagramWarning}`}
       <Container fluid>
         <Row>
           <Col md="6" xl="4" className="form-container">
