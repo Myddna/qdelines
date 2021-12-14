@@ -4,6 +4,9 @@ import { PageDefaultProps, PagePropTypes } from '../PageDefinitions';
 
 const convertToRadians = (deg) => deg * (Math.PI / 180);
 
+/**
+ * Draws the oblique lines, extracted to function because its more complicated than regular lines.
+ */
 const drawObliques = (
   topLimitY,
   startOblique,
@@ -62,6 +65,7 @@ const LineSet = function (props) {
       + lineSetStructure.xHeight
       + lineSetStructure.descender,
   };
+
   return (
     <g>
       {/** Oblique */}

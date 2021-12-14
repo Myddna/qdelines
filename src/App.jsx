@@ -1,6 +1,6 @@
 import './App.css';
 import Container from 'react-bootstrap/Container';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Button, Row, Col, Alert,
 } from 'react-bootstrap';
@@ -12,18 +12,27 @@ import { PageDefaultProps } from './components/Page/PageDefinitions';
 import IntroHero from './components/IntroHero/IntroHero';
 import deepClone from './util/util';
 
+// Not using here the spread operator {...x} because it makes shallow copies.
+// It's a multilevel object of simple literals, so the deepClone is used here.
+// For more info about deep vs shallow cloning, see
+// https://www.samanthaming.com/tidbits/70-3-ways-to-clone-objects/#lodash-deepclone-vs-json
 const initialPageConfig = deepClone(PageDefaultProps);
 
 const App = function () {
   const { t } = useTranslation();
   const [pageConfig, setPageConfig] = useState(initialPageConfig);
 
-  // Config handling
+  /**
+   * Reseting of configuration to default values
+   */
   const handleResetConfig = () => {
     setPageConfig(deepClone(PageDefaultProps));
   };
 
-  // Input change handling
+  /**
+   * Config form input change handling
+   * @param {SyntheticEvent} evt Change Event
+   */
   const handleInputChange = (evt) => {
     const { target } = evt;
     const { name } = target;
@@ -55,7 +64,10 @@ const App = function () {
     });
   };
 
-  // Optional lines enable/disable
+  /**
+   * Toggles optional lines
+   * @param {bool} show
+   */
   const handleToggleOptional = (show) => {
     setPageConfig((previousState) => {
       const newState = { ...previousState };
@@ -84,23 +96,29 @@ const App = function () {
     });
   };
 
+  /**
+   * Launches browser's print functionality
+   */
   const printPage = () => {
     window.print();
   };
 
-  useEffect(() => {
-    if (window.navigator.userAgent.indexOf('Instagram') >= 0) {
-      document.getElementById('printText').classList.remove('d-none');
-    } else {
-      document.getElementById('printText').classList.add('d-none');
-    }
-    return () => {};
-  });
+  // Specian Instagram embedded browser warning
+  const showInstagramWarning = window.navigator.userAgent.indexOf('Instagram') >= 0;
 
   return (
     <div className="App">
       <IntroHero />
       <Container fluid>
+        {showInstagramWarning && (
+        <Alert
+          variant="secondary"
+          id="printText"
+          className="my-3 text-center"
+        >
+          {t('ui.warning.instagram')}
+        </Alert>
+        )}
         <Row>
           <Col md="6" xl="4" className="form-container">
             <ControlForm
@@ -118,15 +136,7 @@ const App = function () {
                   {' '}
                   {t('ui.print')}
                 </Button>
-                <Alert
-                  variant="secondary"
-                  id="printText"
-                  className="d-none my-3"
-                >
-                  {t('ui.warning.instagram')}
-                </Alert>
               </div>
-
               <Page config={pageConfig} />
             </div>
           </Col>
