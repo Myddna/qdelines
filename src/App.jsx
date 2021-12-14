@@ -18,12 +18,17 @@ const App = function () {
   const { t } = useTranslation();
   const [pageConfig, setPageConfig] = useState(initialPageConfig);
 
-  // Config handling
+  /**
+   * Reseting of configuration to default values
+   */
   const handleResetConfig = () => {
     setPageConfig(deepClone(PageDefaultProps));
   };
 
-  // Input change handling
+  /**
+   * Config form input change handling
+   * @param {SyntheticEvent} evt Change Event
+   */
   const handleInputChange = (evt) => {
     const { target } = evt;
     const { name } = target;
