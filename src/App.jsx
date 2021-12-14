@@ -12,6 +12,10 @@ import { PageDefaultProps } from './components/Page/PageDefinitions';
 import IntroHero from './components/IntroHero/IntroHero';
 import deepClone from './util/util';
 
+// Not using here the spread operator {...x} because it makes shallow copies.
+// It's a multilevel object of simple literals, so the deepClone is used here.
+// For more info about deep vs shallow cloning, see
+// https://www.samanthaming.com/tidbits/70-3-ways-to-clone-objects/#lodash-deepclone-vs-json
 const initialPageConfig = deepClone(PageDefaultProps);
 
 const App = function () {
