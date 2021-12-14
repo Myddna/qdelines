@@ -99,27 +99,22 @@ const App = function () {
     window.print();
   };
 
-  /**
-   * Using useEffect Hook to show or hide the warning...
-   */
-  // useEffect(() => {
-  //   if (window.navigator.userAgent.indexOf('Instagram') >= 0) {
-  //     /** Instagram embedded browser does not allow to print, show the warning */
-  //     document.getElementById('printText').classList.remove('d-none');
-  //   } else {
-  //     document.getElementById('printText').classList.add('d-none');
-  //   }
-  //   return () => {};
-  // });
-
+  // Specian Instagram embedded browser warning
   const showInstagramWarning = window.navigator.userAgent.indexOf('Instagram') >= 0;
 
   return (
     <div className="App">
       <IntroHero />
-      {window.navigator.userAgent}
-      {`show instagram warning: ${showInstagramWarning}`}
       <Container fluid>
+        {showInstagramWarning && (
+        <Alert
+          variant="secondary"
+          id="printText"
+          className="my-3 text-center"
+        >
+          {t('ui.warning.instagram')}
+        </Alert>
+        )}
         <Row>
           <Col md="6" xl="4" className="form-container">
             <ControlForm
@@ -137,17 +132,7 @@ const App = function () {
                   {' '}
                   {t('ui.print')}
                 </Button>
-                {showInstagramWarning && (
-                <Alert
-                  variant="secondary"
-                  id="printText"
-                  className="d-none my-3"
-                >
-                  {t('ui.warning.instagram')}
-                </Alert>
-                )}
               </div>
-
               <Page config={pageConfig} />
             </div>
           </Col>
