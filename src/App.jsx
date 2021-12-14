@@ -1,6 +1,6 @@
 import './App.css';
 import Container from 'react-bootstrap/Container';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Button, Row, Col, Alert,
 } from 'react-bootstrap';
@@ -55,7 +55,10 @@ const App = function () {
     });
   };
 
-  // Optional lines enable/disable
+  /**
+   * Toggles optional lines
+   * @param {bool} show
+   */
   const handleToggleOptional = (show) => {
     setPageConfig((previousState) => {
       const newState = { ...previousState };
@@ -84,18 +87,27 @@ const App = function () {
     });
   };
 
+  /**
+   * Launches browser's print functionality
+   */
   const printPage = () => {
     window.print();
   };
 
-  useEffect(() => {
-    if (window.navigator.userAgent.indexOf('Instagram') >= 0) {
-      document.getElementById('printText').classList.remove('d-none');
-    } else {
-      document.getElementById('printText').classList.add('d-none');
-    }
-    return () => {};
-  });
+  /**
+   * Using useEffect Hook to show or hide the warning...
+   */
+  // useEffect(() => {
+  //   if (window.navigator.userAgent.indexOf('Instagram') >= 0) {
+  //     /** Instagram embedded browser does not allow to print, show the warning */
+  //     document.getElementById('printText').classList.remove('d-none');
+  //   } else {
+  //     document.getElementById('printText').classList.add('d-none');
+  //   }
+  //   return () => {};
+  // });
+
+  const showInstagramWarning = window.navigator.userAgent.indexOf('Instagram') >= 0;
 
   return (
     <div className="App">
@@ -118,6 +130,7 @@ const App = function () {
                   {' '}
                   {t('ui.print')}
                 </Button>
+                {showInstagramWarning && (
                 <Alert
                   variant="secondary"
                   id="printText"
@@ -125,6 +138,7 @@ const App = function () {
                 >
                   {t('ui.warning.instagram')}
                 </Alert>
+                )}
               </div>
 
               <Page config={pageConfig} />
