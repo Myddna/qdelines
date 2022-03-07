@@ -99,8 +99,8 @@ const Page = function ({ config }) {
           {' '}
           -
           {' '}
-          <a href="https://calilineas.quedemoniosescribo.art">
-            https://calilineas.quedemoniosescribo.art
+          <a href="https://calilineas.martam.dev">
+            https://calilineas.martam.dev
           </a>
         </text>
       </svg>
